@@ -1,0 +1,24 @@
+.ant-row-flex-space-around {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  padding: 0.266667rem 0;
+}
+.ant-col {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+}
+.ant-col i,
+p {
+  font-size: 0.35rem;
+}
+.ant-col p {
+  margin-bottom: 0;
+  margin-top: 0.066667rem;
+  font-size: 0.2rem;
+}
+.active{
+  color: red;
+}
