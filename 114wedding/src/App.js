@@ -7,7 +7,7 @@ import Home from './pages/Home/Home';
 import Encycl from './pages/Encycl/Encycl';
 import Tools from './pages/Tools/Tools';
 import Mine from './pages/Mine/Mine';
-import Head from './components/head';
+
 
 class App extends Component {
   constructor(props) {

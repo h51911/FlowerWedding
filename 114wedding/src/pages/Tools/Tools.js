@@ -1,10 +1,10 @@
 import React from 'react';
-
+import Head from '../../components/head';
 function Tools() {
     return (
         <div>
             <Head />
-            Tools
+            
     </div>
     );
 }
