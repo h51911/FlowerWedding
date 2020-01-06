@@ -1,4 +1,9 @@
 .head {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999;
   height: 1.222222rem;
   background-color: #ff4163;
   p {
@@ -6,5 +11,6 @@
     text-align: center;
     line-height: 1.222222rem;
     color: #fff;
+    margin-bottom: 0;
   }
 }

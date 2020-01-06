@@ -9,6 +9,9 @@ import Encycl from "./pages/Encycl/Encycl";
 import Tools from "./pages/Tools/Tools";
 import Mine from "./pages/Mine/Mine";
 import List from "./pages/List/List";
+import Task from './pages/Tools/components/task';
+import Account from './pages/Tools/components/account';
+import Budget from './pages/Tools/components/budget';
 
 class App extends Component {
   constructor(props) {
@@ -51,21 +54,19 @@ class App extends Component {
 
   render() {
     let { menu } = this.state;
+    let path = this.props.location.pathname;
+
     return (
       <>
         {/* 导航 */}
-
-        <Row type="flex" justify="space-around">
-          {menu.map(item => (
-            <Col
+        {(path === '/home' || path === '/encycl' || path === '/tools' || path === '/mine') ?
+          <Row type="flex" justify="space-around">
+            {menu.map(item => <Col
               span={4}
               key={item.name}
               onClick={this.changMenu.bind(this, item.path)}
-            >
-              <Icon type={item.icon} /> <p> {item.text}</p>
-            </Col>
-          ))}
-        </Row>
+            ><Icon type={item.icon} /> <p> {item.text}</p></Col>)}
+          </Row> : <></>}
 
         {/* 路由配置 */}
         <Switch>
@@ -75,6 +76,11 @@ class App extends Component {
           <Route path="/mine" component={Mine} />
           <Route path="/list" component={List} />
           <Redirect from="/" to="/home" exact />
+          <Route path='/task' component={Task} />
+          <Route path='/budget' component={Budget} />
+          <Route path='/account' component={Account} />
+          <Route path='/notfound' render={() => <h1>你访问的页面不存在</h1>} />
+          <Redirect to="/notfound" />
         </Switch>
       </>
     );

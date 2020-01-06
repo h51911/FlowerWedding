@@ -1,0 +1,10 @@
+.top_info {
+  padding: 0 0.37037rem;
+}
+
+.top_info .imgcon {
+  display: inline-block;
+  height: 1.62963rem;
+  width: 1.62963rem;
+  background-color: #fff;
+}

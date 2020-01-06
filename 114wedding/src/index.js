@@ -8,8 +8,7 @@ import App from "./App";
 import "antd/dist/antd.css";
 import "lib-flexible";
 import * as serviceWorker from "./serviceWorker";
-const Router =
-  process.env.NODE_ENV === "development" ? HashRouter : BrowserRouter;
+const Router = process.env.NODE_ENV === "development" ? HashRouter : BrowserRouter;
 
 ReactDOM.render(
   <Provider store={store}>

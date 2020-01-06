@@ -2,10 +2,11 @@ import React from 'react';
 import '../css/head/head.scss';
 
 
-function Head() {
+function Head(props) {
     return (
         <div className="head">
-            <p>免费婚礼助手</p>
+
+            <p>{props.title}</p>
         </div>
     );
 }
