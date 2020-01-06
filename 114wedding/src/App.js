@@ -7,6 +7,7 @@ import Home from './pages/Home/Home';
 import Encycl from './pages/Encycl/Encycl';
 import Tools from './pages/Tools/Tools';
 import Mine from './pages/Mine/Mine';
+import Head from './components/head';
 
 class App extends Component {
   constructor(props) {
@@ -50,7 +51,7 @@ class App extends Component {
   render() {
     let { menu } = this.state;
     return (<>
-
+      <Head />
       {/* 导航 */}
       <Row type="flex" justify="space-around">
         {menu.map(item => <Col

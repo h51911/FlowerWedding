@@ -1,3 +1,12 @@
+.head {
+  height: 1.222222rem;
+  background-color: #ff4163;
+}
+p {
+  font-size: 0.425926rem;
+  text-align: center;
+}
+
 .ant-row-flex-space-around {
   position: fixed;
   bottom: 0;
@@ -12,13 +21,13 @@
 }
 .ant-col i,
 p {
-  font-size: 0.35rem;
+  font-size: 0.444444rem;
 }
 .ant-col p {
   margin-bottom: 0;
   margin-top: 0.066667rem;
   font-size: 0.2rem;
 }
-.active{
+.active {
   color: red;
 }
