@@ -51,7 +51,8 @@ class App extends Component {
   render() {
     let { menu } = this.state;
     return (<>
-      <Head />
+      
+
       {/* 导航 */}
       <Row type="flex" justify="space-around">
         {menu.map(item => <Col
