@@ -3,10 +3,10 @@ import { Route, Switch, Redirect, withRouter } from 'react-router-dom';
 import { Col, Row, Icon } from 'antd';
 import './App.css'
 
-import Home from './pages/Home';
-import Encycl from './pages/Encycl';
-import Tools from './pages/Tools';
-import Mine from './pages/Mine';
+import Home from './pages/Home/Home';
+import Encycl from './pages/Encycl/Encycl';
+import Tools from './pages/Tools/Tools';
+import Mine from './pages/Mine/Mine';
 
 class App extends Component {
   constructor(props) {
