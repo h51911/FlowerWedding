@@ -97,7 +97,6 @@ class App extends Component {
               <Route path="/shop" component={Shops} />
               <Route path="/order " component={Order} />
               <Route path="/myInfo" component={MyInfo} />
-              <Route path="/login " component={Login} />
               <Route path="/login" component={Login} />
               <Route
                 path="/notfound"
