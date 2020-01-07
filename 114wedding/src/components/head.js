@@ -25,6 +25,18 @@ class Head extends Component {
       {
         path: "/mine",
         text: "我的"
+      },
+      {
+        path: "/task",
+        text: "结婚任务"
+      },
+      {
+        path: '/account',
+        text: '结婚账本'
+      },
+      {
+        path: '/budget',
+        text: '预算详情'
       }
     ]
   };
