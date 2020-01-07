@@ -18,7 +18,6 @@ function DropdownMenu() {
   return (
     <Dropdown overlay={menu} trigger={["click"]}>
       <a className="ant-dropdown-link" href="#">
-        Click me <Icon type="down" />
         不限
         <Icon type="caret-down" />
       </a>

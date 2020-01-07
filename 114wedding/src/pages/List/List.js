@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Col, Row } from "antd";
 import DropdownMenu from "./DropdownMenu";
 
 class List extends Component {
@@ -10,7 +11,17 @@ class List extends Component {
   render() {
     return (
       <div>
-        <DropdownMenu />
+        <ul className="drop">
+          <li>
+            <DropdownMenu />
+          </li>
+          <li>
+            <DropdownMenu />
+          </li>
+          <li>
+            <DropdownMenu />
+          </li>
+        </ul>
       </div>
     );
   }
