@@ -110,6 +110,7 @@ class App extends Component {
           <footer>
             {/* 导航 */}
             {path === "/home" ||
+            path === "/encycl" ||
             path === "/tools" ||
             path === "/mine" ? (
               <Row type="flex" justify="space-around">
