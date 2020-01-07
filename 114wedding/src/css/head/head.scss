@@ -1,16 +1,30 @@
 .head {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 9999;
   height: 1.222222rem;
+  display: flex;
+  align-items: center;
   background-color: #ff4163;
   p {
+    flex: 1;
     font-size: 0.425926rem;
     text-align: center;
     line-height: 1.222222rem;
     color: #fff;
     margin-bottom: 0;
+  }
+  .empty {
+    width: 0.833333rem;
+    height: 100%;
+  }
+  .left {
+    width: 0.601852rem;
+    color: #fff;
+    font-size: 0.444444rem;
+    margin-left: 0.231481rem;
+  }
+  .right {
+    width: 0.601852rem;
+    color: #fff;
+    font-size: 0.444444rem;
+    margin-right: 0.231481rem;
   }
 }

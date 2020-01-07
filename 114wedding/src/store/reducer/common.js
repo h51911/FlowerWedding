@@ -1,5 +1,8 @@
+export const getPath = "getPath";
+
 let initState = {
-  show: true
+  show: true,
+  currentPath: ""
 };
 
 const reducer = function(state = initState, { type, payload }) {
@@ -8,6 +11,11 @@ const reducer = function(state = initState, { type, payload }) {
       return {
         ...state,
         show: payload
+      };
+    case getPath:
+      return {
+        ...state,
+        currentPath: payload
       };
     default:
       return state;
