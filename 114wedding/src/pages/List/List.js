@@ -1,7 +1,19 @@
-import React from "react";
+import React, { Component } from "react";
+import DropdownMenu from "./DropdownMenu";
 
-function List() {
-  return <div>List</div>;
+class List extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
+
+  render() {
+    return (
+      <div>
+        <DropdownMenu />
+      </div>
+    );
+  }
 }
 
 export default List;
