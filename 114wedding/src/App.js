@@ -97,7 +97,7 @@ class App extends Component {
               <Route path="/shop" component={Shops} />
               <Route path="/order " component={Order} />
               <Route path="/myInfo" component={MyInfo} />
-              <Route path="/login " component={Login} />
+              <Route path="/login" component={Login} />
               <Route
                 path="/notfound"
                 render={() => <h1>你访问的页面不存在</h1>}

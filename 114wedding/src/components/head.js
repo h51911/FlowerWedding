@@ -11,8 +11,8 @@ class Head extends Component {
   state = {
     menu: [
       {
-        path: "/home",
-        text: ""
+        path: "/login",
+        text: "登录"
       },
       {
         path: "/List",
@@ -67,6 +67,7 @@ class Head extends Component {
 
     //组件渲染规则
     switch (currentPath) {
+      case "/login": //登录
       case "/tools": //工具
         LeftIcon = empty;
         MidComponent = title;

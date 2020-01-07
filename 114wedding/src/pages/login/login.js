@@ -23,7 +23,7 @@ class Login extends Component {
         const { getFieldDecorator } = this.props.form;
 
         return <>
-            <header><span>登录</span></header>
+
             <main>
                 <div className="logo">
                     <span className="skip">跳过</span>

@@ -1,4 +1,6 @@
+import React, { Component } from 'react';
 import { Carousel, Row, Col, Tabs } from 'antd';
+
 
 import '../../css/home/home.css'
 import Tab from './Tabs'
@@ -254,3 +256,4 @@ class Home extends Component {
         </>
     }
 }
+export default Home;

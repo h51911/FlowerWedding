@@ -14,10 +14,6 @@ body {
   position: relative;
 }
 
-header {
-  height: 5.518519rem;
-}
-
 .ant-carousel .slick-slide {
   text-align: center;
   height: 5.138889rem;

@@ -14,21 +14,21 @@ body {
   position: relative;
 }
 
-header {
-  display: block;
-  width: 100%;
-  height: 1.935185rem;
-  background: #ff4163;
-}
+/* header {
+    display: block;
+    width: 100%;
+    height: 1.935185rem;
+    background: #ff4163;
 
-header span {
-  display: block;
-  font-size: .37037rem;
-  text-align: center;
-  padding-top: 12%;
-  color: #fff;
-}
-
+    span {
+        display: block;
+        //line-height: 1.935185rem;
+        font-size: .37037rem;
+        text-align: center;
+        padding-top: 12%;
+        color: #fff;
+    }
+} */
 main {
   width: 100%;
   display: flex;
