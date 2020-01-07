@@ -15,6 +15,7 @@ import Budget from './pages/Tools/components/budget';
 import Shops from './pages/Mine/components/shops';
 import Order from './pages/Mine/components/order';
 import MyInfo from './pages/Mine/components/myInfo';
+import Login from './pages/login/login';
 
 class App extends Component {
   constructor(props) {
@@ -85,6 +86,7 @@ class App extends Component {
           <Route path='/shops' component={Shops} />
           <Route path='/order' component={Order} />
           <Route path='/myinfo' component={MyInfo} />
+          <Route path='/login' component={Login} />
           <Route path='/notfound' render={() => <h1>你访问的页面不存在</h1>} />
           <Redirect to="/notfound" />
         </Switch>
