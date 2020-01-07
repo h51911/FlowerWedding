@@ -88,7 +88,7 @@ class Tools extends Component {
                                 key={item.title}
                                 onClick={this.changMenu.bind(null, item.path)}
                             >
-                                <img src={item.imgurl} />
+                                <img src={item.imgurl} alt={item.title}/>
                                 <h3>{item.title}</h3>
                                 <p>{item.description}</p>
                             </li>)

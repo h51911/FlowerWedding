@@ -12,6 +12,9 @@ import List from "./pages/List/List";
 import Task from './pages/Tools/components/task';
 import Account from './pages/Tools/components/account';
 import Budget from './pages/Tools/components/budget';
+import Shops from './pages/Mine/components/shops';
+import Order from './pages/Mine/components/order';
+import MyInfo from './pages/Mine/components/myInfo';
 
 class App extends Component {
   constructor(props) {
@@ -79,6 +82,9 @@ class App extends Component {
           <Route path='/task' component={Task} />
           <Route path='/budget' component={Budget} />
           <Route path='/account' component={Account} />
+          <Route path='/shops' component={Shops} />
+          <Route path='/order' component={Order} />
+          <Route path='/myinfo' component={MyInfo} />
           <Route path='/notfound' render={() => <h1>你访问的页面不存在</h1>} />
           <Redirect to="/notfound" />
         </Switch>

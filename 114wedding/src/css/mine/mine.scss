@@ -1,9 +1,82 @@
+.mine {
+  background-color: #fff;
+}
 .top_info {
-  padding: 0 0.37037rem;
-  .imgcon {
-    display: inline-block;
-    height: 1.62963rem;
-    width: 1.62963rem;
-    background-color: #fff;
+  margin-top: 1.222222rem;
+  padding: 0.277778rem 0.37037rem 0.555556rem;
+  display: flex;
+  justify-content: space-between;
+  color: #fff;
+  background-color: #fa5c6a;
+  .left {
+    display: flex;
+    line-height: 1.62963rem;
+    .imgcon {
+      height: 1.62963rem;
+      width: 1.62963rem;
+      background-color: #fff;
+      border-radius: 50%;
+    }
+    .text {
+      font-size: 0.296296rem;
+      margin-left: 0.277778rem;
+    }
+  }
+  .right {
+    position: relative;
+    display: flex;
+    justify-content: center;
+
+    .dis {
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      font-size: 0.296296rem;
+      margin-right: 0.277778rem;
+      margin-top: 0.481481rem;
+      span {
+        line-height: 0.296296rem;
+      }
+      .days {
+        margin-top: 0.240741rem;
+      }
+    }
+    .anticon-right {
+      margin-top: 0.777778rem;
+    }
+  }
+}
+.top_info_bottom {
+  margin-top: -0.018519rem;
+  height: 0.37037rem;
+  background: url(/img/mine/mine_bg_02.jpg) no-repeat center bottom;
+  background-size: 100% 100%;
+}
+.icons {
+  display: flex;
+  justify-content: space-around;
+  padding: 0.37037rem 0;
+  .current {
+    font-size: .37037rem;
+  }
+}
+.icon {
+  text-align: center;
+  img {
+    height: 0.425926rem;
+    width: 0.425926rem;
+  }
+  h3 {
+    font-size: 0.296296rem;
+    line-height: 0.296296rem;
+    margin-top: 0.277778rem;
+  }
+}
+.two {
+  .icon {
+    img {
+      height: 0.574074rem;
+      width: 0.574074rem;
+    }
   }
 }
