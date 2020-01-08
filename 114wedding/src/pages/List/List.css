@@ -1,7 +1,0 @@
-.drop {
-  list-style: none;
-  display: flex;
-}
-.drop li {
-  flex: 1;
-}

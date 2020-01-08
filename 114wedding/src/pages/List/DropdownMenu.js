@@ -9,19 +9,20 @@ const menu = (
     <Menu.Item key="1">
       <a href="http://www.taobao.com/">2nd menu item</a>
     </Menu.Item>
-    <Menu.Divider />
     <Menu.Item key="3">3rd menu item</Menu.Item>
   </Menu>
 );
 
-function DropdownMenu() {
+function DropdownMenu(props) {
   return (
-    <Dropdown overlay={menu} trigger={["click"]}>
-      <a className="ant-dropdown-link" href="#">
-        不限
-        <Icon type="caret-down" />
-      </a>
-    </Dropdown>
+    <dl className="item-drop">
+      <dt>
+        <span>
+          {props.children}
+          <Icon type="caret-down" style={{ verticalAlign: "middle" }} />
+        </span>
+      </dt>
+    </dl>
   );
 }
 

@@ -10,6 +10,7 @@ import Encycl from "./pages/Encycl/Encycl";
 import Tools from "./pages/Tools/Tools";
 import Mine from "./pages/Mine/Mine";
 import List from "./pages/List/List";
+import Details from "./pages/List/Details";
 import Task from "./pages/Tools/components/task";
 import Account from "./pages/Tools/components/account";
 import Budget from "./pages/Tools/components/budget";
@@ -98,6 +99,7 @@ class App extends Component {
               <Route path="/order " component={Order} />
               <Route path="/myInfo" component={MyInfo} />
               <Route path="/login" component={Login} />
+              <Route path="/details/:id" component={Details} />
               <Route
                 path="/notfound"
                 render={() => <h1>你访问的页面不存在</h1>}

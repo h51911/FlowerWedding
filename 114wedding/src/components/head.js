@@ -19,6 +19,10 @@ class Head extends Component {
         text: "商家列表"
       },
       {
+        path: "/list",
+        text: "商家列表"
+      },
+      {
         path: "/tools",
         text: "免费结婚助手"
       },
@@ -31,12 +35,12 @@ class Head extends Component {
         text: "结婚任务"
       },
       {
-        path: '/account',
-        text: '结婚账本'
+        path: "/account",
+        text: "结婚账本"
       },
       {
-        path: '/budget',
-        text: '预算详情'
+        path: "/budget",
+        text: "预算详情"
       }
     ]
   };
@@ -66,19 +70,19 @@ class Head extends Component {
     const share = () => <Icon className="right" type="share-alt" />;
 
     //组件渲染规则
-    switch (currentPath) {
-      case "/login": //登录
-      case "/tools": //工具
+    switch (true) {
+      case currentPath === "/login": //登录
+      case currentPath === "/tools": //工具
         LeftIcon = empty;
         MidComponent = title;
         RightIcon = empty;
         break;
-      case "/mine": //我的
+      case currentPath === "/mine": //我的
         LeftIcon = empty;
         MidComponent = title;
         RightIcon = more;
         break;
-      case "/details": //详情
+      case currentPath.indexOf("/details/") !== -1: //详情
         LeftIcon = back;
         MidComponent = title;
         RightIcon = share;
