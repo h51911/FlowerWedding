@@ -249,7 +249,7 @@ class Home extends Component {
                                 <Tab />
                             </Tabs.TabPane>
                         ))}
-                    </Tabs>,
+                    </Tabs>
                 </section>
 
                 <section>

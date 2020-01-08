@@ -14,23 +14,7 @@ body {
     position: relative;
 }
 
-/* header {
-    display: block;
-    width: 100%;
-    height: 1.935185rem;
-    background: #ff4163;
-
-    span {
-        display: block;
-        //line-height: 1.935185rem;
-        font-size: .37037rem;
-        text-align: center;
-        padding-top: 12%;
-        color: #fff;
-    }
-} */
-
-main {
+.main1 {
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -63,19 +47,8 @@ main {
         }
     }
 
-    /*    .dl {
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-
-        input {
-            clear: both;
-        }
-    } */
-
     .login-form {
-        max-width: 300px;
+        width: 80%;
         margin: 0 auto;
     }
 
@@ -112,7 +85,7 @@ main {
         color: #2ea8f5;
         border: none;
         position: relative;
-        top: -1.1rem;
+        top: -5.85rem;
         left: 65%;
         text-align: center;
     }
@@ -120,6 +93,7 @@ main {
     .ant-checkbox-wrapper {
         position: relative;
         top: -1.092593rem;
+        font-size: .324074rem;
     }
 
     .ant-btn {
@@ -145,6 +119,14 @@ main {
         background: #ff4163;
         border: none;
         height: 1.231481rem;
+    }
+
+    .ant-checkbox-wrapper.ant-checkbox-wrapper-checked {
+        margin-top: 1.092593rem;
+    }
+
+    .ant-checkbox-wrapper {
+        margin-top: 1.092593rem;
     }
 
 }

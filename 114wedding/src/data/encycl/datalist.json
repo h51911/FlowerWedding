@@ -1,78 +1,8 @@
-import React, { Component } from 'react';
-import { Carousel, Row, Col, Tabs } from 'antd';
-
-import Tablist from './Tablist'
-import '../../css/encycl/encycl.css'
-
-const { TabPane } = Tabs;
-class Encycl extends Component {
-    state = {
-        datalist1: [
-            {
-                url: 'https://www.wed114.cn/wiki/static/images/yibu.jpg',
-                title: '跨年狂欢！拍婚纱照送全家福！！！'
-            },
-            {
-                url: 'https://www.wed114.cn/wiki/static/images/erbu.jpg',
-                title: '广州爱城婚纱摄影天河店'
-            },
-            {
-                url: 'https://www.wed114.cn/wiki/static/images/sanbu.jpg',
-                title: '广州田野婚纱摄影工作室'
-            },
-            {
-                url: 'https://www.wed114.cn/wiki/static/images/sibu.jpg',
-                title: '广州田野婚纱摄影工作室'
-            },
-            {
-                url: 'https://www.wed114.cn/wiki/static/images/wubu.jpg',
-                title: '广州田野婚纱摄影工作室'
-            },
-            {
-                url: 'https://www.wed114.cn/wiki/static/images/liubu.jpg',
-                title: '广州田野婚纱摄影工作室'
-            }
-        ],
-        list1: [
-            {
-                url: 'https://static3.wed114.cn/mobile/v2/img/@2x/Photography@2x.png',
-                text: '婚纱摄影'
-            },
-            {
-                url: 'https://static3.wed114.cn/mobile/v2/img/@2x/Plan@2x.png',
-                text: '婚礼策划'
-            },
-            {
-                url: 'https://static3.wed114.cn/mobile/v2/img/@2x/dress@2x.png',
-                text: '婚纱礼服'
-            },
-            {
-                url: 'https://static3.wed114.cn/mobile/v2/img/@2x/icon_xngz.png',
-                text: '新娘跟妆'
-            },
-            {
-                url: 'https://static3.wed114.cn/mobile/v2/img/@2x/icon_hlgp.png',
-                text: '婚礼跟拍'
-            },
-            {
-                url: 'https://static3.wed114.cn/mobile/v2/img/@2x/icon_siyi.png',
-                text: '婚礼司仪'
-            },
-            {
-                url: 'https://static3.wed114.cn/mobile/v2/img/@2x/icon_dhy.png',
-                text: '婚宴酒店'
-            },
-            {
-                url: 'https://static3.wed114.cn/mobile/v2/img/@2x/icon_photokids.png',
-                text: '儿童摄影'
-            },
-
-        ],
-        data: [
-            {
-                "id": "1",
-                "title": "热点百科",
-                "datalist1": [{
+{
+    "data": [{
+            "id": "1",
+            "title": "热点百科",
+            "datalist1": [{
                     "id": "1",
                     "text1": "#自己生日发朋友圈# ",
                     "text2": "740人觉得有用 ",
@@ -107,12 +37,12 @@ class Encycl extends Component {
                     "text3": "情侣之间的调皮称呼",
                     "text4": "情侣之间的调皮称呼，表达着爱意同时也体现了互相间轻松的相处氛围。对于情侣之间的创意爱称，你还知道哪些呢?'下面这些情侣爱称呼叫不俗气好听的，赶紧收藏吧。"
                 }
-                ]
-            },
-            {
-                "id": "2",
-                "title": "热推词条",
-                "datalist1": [{
+            ]
+        },
+        {
+            "id": "2",
+            "title": "热推词条",
+            "datalist1": [{
                     "id": "1",
                     "text1": "#自己生日发朋友圈# ",
                     "text2": "740人觉得有用 ",
@@ -147,12 +77,12 @@ class Encycl extends Component {
                     "text3": "情侣之间的调皮称呼",
                     "text4": "情侣之间的调皮称呼，表达着爱意同时也体现了互相间轻松的相处氛围。对于情侣之间的创意爱称，你还知道哪些呢?'下面这些情侣爱称呼叫不俗气好听的，赶紧收藏吧。"
                 }
-                ]
-            },
-            {
-                "id": "3",
-                "title": "猜你喜欢",
-                "datalist1": [{
+            ]
+        },
+        {
+            "id": "3",
+            "title": "猜你喜欢",
+            "datalist1": [{
                     "id": "1",
                     "text1": "#领证不领空什么意思#",
                     "text2": "0人觉得有用 ",
@@ -187,87 +117,7 @@ class Encycl extends Component {
                     "text3": "幽默伴郎致辞",
                     "text4": "伴郎一般是由新郎的好哥们担任，有些婚礼免不了会让伴郎发表致辞以表达对好兄弟的美好祝福。那伴郎应该如何幽默简单大方的致辞呢? -起来看看吧。"
                 }
-                ]
-            }
-        ]
-    }
-    onChange(a, b, c) {
-        //console.log(a, b, c);
-    }
-    callback(key) {
-        //console.log(key);
-    }
-
-
-    render() {
-        let { datalist1 } = this.state;
-        let { list1 } = this.state;
-
-        let { data } = this.state;
-        return <>
-            <div className="header">
-                <Carousel autoplay>
-                    {datalist1.map((item, index) => (
-                        <div key={index}>
-                            <img src={item.url} alt={item.title} />
-                        </div>
-                    ))}
-                </Carousel>,
-        </div>
-            <div className="main2">
-                <section className="nav">
-                    <div className="title">婚嫁百科</div>
-                    <div className="navigation">
-                        <Carousel afterChange={this.onChange}>
-                            <div>
-                                <ul className="gather">{list1.map((item) => (
-                                    <li className="intro" onClick={this.change} key={item.text}>
-                                        <img src={item.url} />
-                                        <p className="text1">{item.text}</p>
-                                    </li>
-                                ))}
-                                </ul>
-                            </div>
-                            <div>
-                                <ul className="gather">{list1.map((item) => (
-                                    <li className="intro" onClick={this.change} key={item.text}>
-                                        <img src={item.url} />
-                                        <p className="text1">{item.text}</p>
-                                    </li>
-                                ))}
-                                </ul>
-                            </div>
-                            <div>
-                                <ul className="gather">{list1.map((item) => (
-                                    <li className="intro" onClick={this.change} key={item.text}>
-                                        <img src={item.url} />
-                                        <p className="text1">{item.text}</p>
-                                    </li>
-                                ))}
-                                </ul>
-                            </div>
-                        </Carousel>
-                    </div>
-
-                </section>
-                <section className="TabStrip">
-                    <Tabs defaultActiveKey="1" onChange={this.callback}>
-                        {data.map((item, index) => (
-                            <Tabs.TabPane tab={item.title} key={item.id}>
-                                {item.datalist1.map((ele) => (
-                                    <Tablist ele={ele} />
-                                ))}
-
-                            </Tabs.TabPane>
-                        ))}
-                    </Tabs>
-                </section>
-            </div >
-
-        </>
-    }
-
-
+            ]
+        }
+    ]
 }
-
-export default Encycl;
