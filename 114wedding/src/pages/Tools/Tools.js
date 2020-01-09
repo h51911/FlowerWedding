@@ -79,7 +79,6 @@ class Tools extends Component {
         let { menu } = this.state
         return (
             <>
-                <Head title={'免费婚礼助手'} />
                 <div className='top'></div>
                 <div className='cons'>
                     <ul className='conlist'>

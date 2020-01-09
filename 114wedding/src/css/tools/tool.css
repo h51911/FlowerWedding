@@ -3,14 +3,13 @@ li {
 }
 
 .top {
-  margin-top: 1.222222rem;
   height: 2.037037rem;
   background-color: #fe6172;
 }
 
 .cons {
   position: relative;
-  height: 18.666667rem;
+  height: 16.666667rem;
   background-color: #f4f4f4;
   width: 100%;
 }

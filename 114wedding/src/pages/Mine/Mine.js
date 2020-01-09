@@ -9,7 +9,6 @@ class Tools extends Component {
         super();
         this.state = {
             username: '网友2832687',
-            title: '我的',
             info: [
                 {
                     imgurl: '/img/mine/mine_05.jpg',
@@ -58,7 +57,6 @@ class Tools extends Component {
         let { menu, title, info, username } = this.state
         return (
             <div className='mine'>
-                <Head title={title} />
                 <div><div className='top_info'>
                     <div className='left' onClick={this.myInfo}>
                         <span className='imgcon'></span>
