@@ -49,7 +49,7 @@ class Head extends Component {
     let { currentPath } = this.props;
     let name = [];
     name = this.state.menu.filter(item => {
-      if (item.path === currentPath) return item;
+      if (currentPath.indexOf(item.path) !== -1) return item;
     });
 
     //空白
