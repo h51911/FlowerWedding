@@ -17,48 +17,59 @@ class Home extends Component {
         this.state = {
             datalist: [
                 {
+                    id: '1',
                     url: 'https://pic18.wed114.cn/20191216/2019121614162692331407.jpg',
                     title: '跨年狂欢！拍婚纱照送全家福！！！'
                 },
                 {
+                    id: '2',
                     url: 'https://pic18.wed114.cn/20200102/2020010215000639105468.jpg',
                     title: '广州爱城婚纱摄影天河店'
                 },
                 {
+                    id: '3',
                     url: 'https://pic18.wed114.cn/20191223/2019122317584872149360.jpg',
                     title: '广州田野婚纱摄影工作室'
                 },
             ],
             list: [
                 {
+                    id: '1',
                     url: 'https://static3.wed114.cn/mobile/v2/img/@2x/Photography@2x.png',
                     text: '婚纱摄影'
                 },
                 {
+                    id: '2',
                     url: 'https://static3.wed114.cn/mobile/v2/img/@2x/Plan@2x.png',
                     text: '婚礼策划'
                 },
                 {
+                    id: '3',
                     url: 'https://static3.wed114.cn/mobile/v2/img/@2x/dress@2x.png',
                     text: '婚纱礼服'
                 },
                 {
+                    id: '4',
                     url: 'https://static3.wed114.cn/mobile/v2/img/@2x/icon_xngz.png',
                     text: '新娘跟妆'
                 },
                 {
+                    id: '5',
                     url: 'https://static3.wed114.cn/mobile/v2/img/@2x/icon_hlgp.png',
                     text: '婚礼跟拍'
                 },
                 {
+                    id: '6',
                     url: 'https://static3.wed114.cn/mobile/v2/img/@2x/icon_siyi.png',
                     text: '婚礼司仪'
                 },
                 {
+                    id: '7',
                     url: 'https://static3.wed114.cn/mobile/v2/img/@2x/icon_dhy.png',
                     text: '婚宴酒店'
                 },
                 {
+                    id: '8',
                     url: 'https://static3.wed114.cn/mobile/v2/img/@2x/icon_photokids.png',
                     text: '儿童摄影'
                 },
@@ -127,19 +138,24 @@ class Home extends Component {
                 {
                     title: '儿童摄影'
                 },
-            ]
+            ],
+            kind: ""
 
 
             //this.callback = this.callback.bind(this);
         }
-        this.change = this.change.bind(this)
+        this.change = this.change.bind(this);
+
+        let kind = this.state.list[0].text;
+
+
     }
 
     callback(key) {
         console.log(key);
     }
-    change() {
-        this.props.history.push('/list')
+    change(kind) {
+        this.props.history.push('/list/' + kind + '/all')
     }
     render() {
         let { datalist } = this.state;
@@ -150,7 +166,7 @@ class Home extends Component {
             <div className="header">
                 <Carousel autoplay>
                     {datalist.map((item, index) => (
-                        <div>
+                        <div key={item.id}>
                             <img src={item.url} alt={item.title} />
                         </div>
                     ))}
@@ -159,7 +175,7 @@ class Home extends Component {
             <main className="main">
                 <section className="nav">
                     <ul>{list.map((item, index) => (
-                        <li onClick={this.change}>
+                        <li onClick={this.change.bind(null, item.text)} key={item.id} >
                             <img src={item.url} />
                             <p>{item.text}</p>
                         </li>
@@ -221,7 +237,7 @@ class Home extends Component {
                     <div className="itemBox">
                         <div className="Box">
                             {listvideo.map((item, index) => (
-                                <div className="wrapper">
+                                <div className="wrapper" key={item.num}>
                                     <div className="itemVideo">
                                         <img src={item.url} />
                                     </div>

@@ -111,24 +111,24 @@ class App extends Component {
           <footer>
             {/* 导航 */}
             {path === "/home" ||
-            path === "/encycl" ||
-            path === "/tools" ||
-            path === "/mine" ? (
-              <Row type="flex" justify="space-around">
-                {menu.map(item => (
-                  <Col
-                    className={path === item.path ? "active" : ""}
-                    span={4}
-                    key={item.name}
-                    onClick={this.changMenu.bind(this, item.path)}
-                  >
-                    <Icon type={item.icon} /> <p> {item.text}</p>
-                  </Col>
-                ))}
-              </Row>
-            ) : (
-              <></>
-            )}
+              path === "/encycl" ||
+              path === "/tools" ||
+              path === "/mine" ? (
+                <Row type="flex" justify="space-around">
+                  {menu.map(item => (
+                    <Col
+                      className={path === item.path ? "active" : ""}
+                      span={4}
+                      key={item.name}
+                      onClick={this.changMenu.bind(this, item.path)}
+                    >
+                      <Icon type={item.icon} /> <p> {item.text}</p>
+                    </Col>
+                  ))}
+                </Row>
+              ) : (
+                <></>
+              )}
           </footer>
         </div>
       </>
