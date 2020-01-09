@@ -90,7 +90,7 @@ class App extends Component {
               <Route path="/encycl" component={Encycl} />
               <Route path="/tools" component={Tools} />
               <Route path="/mine" component={Mine} />
-              <Route path="/list/:kind/all" component={List} />
+              <Route path="/list/:kind/:addr" component={List} />
               <Redirect from="/" to="/home" exact />
               <Route path="/task" component={Task} />
               <Route path="/budget" component={Budget} />
