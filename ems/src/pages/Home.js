@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { HashRouter, Route, Switch, Redirect, NavLink } from 'react-router-dom';
+import { HashRouter, Route, Redirect, NavLink } from 'react-router-dom';
 import { Layout, Menu, Breadcrumb, Icon } from 'antd';
 
 import User from '../components/User';
