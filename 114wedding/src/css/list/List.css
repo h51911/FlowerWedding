@@ -30,8 +30,15 @@
   color: #393939;
   font-size: 0.277778rem;
 }
-.list-content {
+.ant-spin-nested-loading {
   flex: 1;
+  overflow-y: auto;
+}
+.ant-spin-container {
+  height: 100%;
+}
+.list-content {
+  height: 100%;
   overflow-y: hidden;
   position: relative;
 }
