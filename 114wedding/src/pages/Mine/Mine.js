@@ -1,14 +1,30 @@
 import React, { Component } from 'react';
-import Head from '../../components/head';
-import '../../css/mine/mine.scss'
-import { Icon, Badge } from 'antd'
+import { connect } from 'react-redux';
+import '../../css/mine/mine.scss';
+import { Icon, Badge } from 'antd';
+import { sever } from '../../api/index';
+// import { login } from '../../store/actions/user';
 
+//将store的数据映射到 UI组件
+const mapStateToProps = state => {
+    return {
+        nikename: state.user.uesrInfo.nikename,
+        phone: state.user.uesrInfo.phone,
+        weddingdate: state.user.uesrInfo.weddingdate
+    }
+}
+const mapDispatchToProps = dispatch => {
+    return {
 
-class Tools extends Component {
+    }
+}
+
+class Mine extends Component {
     constructor() {
         super();
         this.state = {
-            username: '网友2832687',
+            // weddingdate: '',
+            dis: '',
             info: [
                 {
                     imgurl: '/img/mine/mine_05.jpg',
@@ -45,31 +61,50 @@ class Tools extends Component {
             ]
         }
         this.changMenu = this.changMenu.bind(this)
+        this.up_date = this.up_date.bind(this)
     }
+
     changMenu(path) {
         this.props.history.push(path)
     }
     myInfo = () => {
-        this.props.history.push('/myinfo')
+        // this.props.history.push('/myinfo')
+        this.props.phone.length !== 0 ? this.props.history.push("/myinfo") : this.props.history.push('/login');
+    }
+    up_date({ target }) {
+        let dis = parseInt((Date.parse(target.value) - Date.now()) / 1000 / 60 / 60 / 24);
+        if (dis <= 0) {
+            dis = '...'
+        }
+    }
+
+    login = () => {
+        this.props.history.push('/login');
     }
 
     render() {
-        let { menu, title, info, username } = this.state
+        console.log(this.props);
+        let { nikename, login, weddingdate } = this.props
+        let { menu, info, dis } = this.state
         return (
             <div className='mine'>
                 <div><div className='top_info'>
                     <div className='left' onClick={this.myInfo}>
                         <span className='imgcon'></span>
-                        <span className='text'>
-                            {username} <Icon type="edit" />
-                        </span>
+                        <span className='text'>{nikename.length !== 0 ? nikename : "立即登录"}<Icon type="edit" /></span>
                     </div>
                     <div className='right'>
                         <p className='dis'>
                             <span>距离婚礼还有</span>
-                            <span className='days'>60 天</span>
+                            <span className='days'>{dis.length !== 0 ? dis : ".  .  ."}天</span>
                         </p>
                         <Icon type="right" />
+                        <input type="date" className="date"
+                            ref={(ele) => this.weddingdate = ele}
+                            value={weddingdate}
+                            // value={this.state.weddingdate}
+                            onChange={this.up_date}
+                        />
                     </div>
                 </div>
                     <div className='top_info_bottom'></div>
@@ -105,4 +140,5 @@ class Tools extends Component {
     };
 }
 
-export default Tools;
+Mine = connect(mapStateToProps, mapDispatchToProps)(Mine);
+export default Mine;

@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Head from '../../components/head';
 import '../../css/tools/tool.scss'
 
 

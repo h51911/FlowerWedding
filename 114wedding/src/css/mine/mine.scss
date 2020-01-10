@@ -25,7 +25,6 @@
     position: relative;
     display: flex;
     justify-content: center;
-
     .dis {
       margin: 0;
       display: flex;
@@ -56,7 +55,7 @@
   justify-content: space-around;
   padding: 0.37037rem 0;
   .current {
-    font-size: .37037rem;
+    font-size: 0.37037rem;
   }
 }
 .icon {
@@ -64,6 +63,7 @@
   img {
     height: 0.425926rem;
     width: 0.425926rem;
+    display: inline-block;
   }
   h3 {
     font-size: 0.296296rem;
@@ -78,4 +78,12 @@
       width: 0.574074rem;
     }
   }
+}
+.date {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0.185185rem;
+  left: 0;
+  opacity: 0;
 }

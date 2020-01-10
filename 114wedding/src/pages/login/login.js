@@ -1,10 +1,8 @@
 import React, { Component } from 'react'
-import { Form, Icon, Input, Button, Checkbox } from 'antd';
-import img from '../../doc/login/logo.png'
-import '../../css/login/login.css'
-
-import { sever } from '../../api/index'
-import qs from "qs";
+import { Form, message, Input, Button, Checkbox } from 'antd';
+import img from '../../doc/login/logo.png';
+import '../../css/login/login.css';
+import { sever } from '../../api/index';
 
 class Login extends Component {
     constructor() {
@@ -15,31 +13,41 @@ class Login extends Component {
         this.change = this.change.bind(this)
     }
 
-
     handleSubmit = e => {
         e.preventDefault();
         this.props.form.validateFields(async (err, values) => {
             if (!err) {
-                //console.log(values);
-                let { data } = await sever.post('./login/verifycode', qs.stringify({
+                let { data } = await sever.post('login/verifycode', {
                     phone: values.phone,
                     code: values.text
-                }))
-                //console.log(data)
+                });
+                if (data.code === 1) {
+                    let res = JSON.stringify(data.data[0])
+                    message.success("验证成功");
+                    //token写入本地
+                    localStorage.setItem("Authorization", data.authorization);
+                    localStorage.setItem("user", res);
+                    this.props.history.push('/home');
+                } else {
+                    message.error("验证失败");
+                }
             }
         });
     };
+
     change() {
-        this.props.history.push('/home')
+        this.props.history.push('/home');
     }
 
     sendcode = async () => {
         let phone = this.props.form.getFieldValue('phone');
-        //console.log(toString(phone));
-        let { data } = await sever.post('/login/sendcode', qs.stringify({ phone: phone }));
-        console.log(data);
+        let { data } = await sever.post('/login/sendcode', { phone: phone });
+        if (data.code === 1) {
+            message.success('发送成功');
+        } else {
+            message.error('发送失败');
+        }
     }
-
 
     render() {
         const { getFieldDecorator } = this.props.form;
@@ -60,19 +68,14 @@ class Login extends Component {
                                     message: '请输入正确的手机号码'
                                 }],
                             })(
-                                <Input
-                                    placeholder="请输入手机号码"
-                                />,
+                                <Input placeholder="请输入手机号码" />,
                             )}
                         </Form.Item>
                         <Form.Item>
                             {getFieldDecorator('text', {
                                 rules: [{ required: true, message: '请输入正确的验证码' }],
                             })(
-                                <Input
-
-                                    placeholder="请输入验证码"
-                                />,
+                                <Input placeholder="请输入验证码" />,
                             )}
                         </Form.Item>
                         <Form.Item>
@@ -97,6 +100,6 @@ class Login extends Component {
     }
 }
 
-const WrappedNormalLoginForm = Form.create({ name: 'normal_login' })(Login);
 
+const WrappedNormalLoginForm = Form.create({ name: 'normal_login' })(Login);
 export default WrappedNormalLoginForm;

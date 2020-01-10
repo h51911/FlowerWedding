@@ -1,0 +1,52 @@
+.myinfo {
+  .info_list {
+    .info_con {
+      display: flex;
+      padding: 0 0.407407rem;
+      height: 1.581481rem;
+      border-bottom: 0.12963rem solid #f9f9f9;
+      line-height: 1.481481rem;
+      font-size: 0.277778rem;
+      color: #999999;
+      em {
+        color: #74c5f2;
+        font-style: normal;
+      }
+      .info {
+        flex: 1;
+        font-size: 0.259259rem;
+        color: #000;
+        padding: 0 0 0 0.277778rem;
+      }
+      .upcon {
+        position: relative;
+      }
+      .date {
+        position: absolute;
+        top: 0rem;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        opacity: 0;
+      }
+      .anticon {
+        margin-left: 0.240741rem;
+      }
+    }
+    .phone {
+      border-bottom: none;
+    }
+  }
+  .btn {
+    padding: 0 0.574074rem;
+    margin-top: 1.111111rem;
+    .ant-btn {
+      height: 1.166667rem;
+      line-height: 1.166667rem;
+    }
+    .ant-btn-primary {
+      background-color: #ff4163;
+      border-color: #ff4163;
+    }
+  }
+}

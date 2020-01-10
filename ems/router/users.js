@@ -24,9 +24,19 @@ let { mongo } = require('../db');
 
 //查询所有用户
 Router.get('/', async (req, res) => {
-    console.log(req.query);
-
     let result = await mongo.find('user', req.query);
+    if (result.length) {
+        //成功
+        res.send(formatdata({ data: result }));
+    } else {
+        //失败
+        res.send(formatdata({ code: 0 }));
+    }
+});
+
+Router.get('/', async (req, res) => {
+    let { phone } = req.query
+    let result = await mongo.find('user', { phone });;
     if (result.length) {
         //成功
         res.send(formatdata({ data: result }));
@@ -48,6 +58,16 @@ Router.post('/reg', async (req, res) => {
     }
 });
 
+//修改用户相关数据
+Router.post('/updateuser', async (req, res) => {
+    let { phone, nikename, weddingdate, gender } = req.body
+    let result = await mongo.update('user', { phone }, { $set: { nikename, weddingdate, gender } })
+    if (result.modifiedCount) {
+        res.send(formatdata())
+    } else {
+        res.send(formatdata({ code: 0 }))
+    }
+});
 
 
 

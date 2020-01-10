@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Head from '../../../components/head';
 // import '../../css/tools/task.scss'
 class Budget extends Component {
     constructor() {
@@ -13,7 +12,6 @@ class Budget extends Component {
     render() {
         return (
             <>
-                <Head title='预算详情' />
                 Budget
             </>
         )

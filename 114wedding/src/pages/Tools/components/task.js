@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Head from '../../../components/head';
 // import '../../css/tools/task.scss'
 class Task extends Component {
     constructor() {
@@ -12,7 +11,6 @@ class Task extends Component {
     render() {
         return (
             <>
-                <Head title='结婚任务' />
                 Task
             </>
         )
