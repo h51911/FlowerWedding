@@ -6,6 +6,7 @@ const Request = axios.create({
 });
 
 export const get = async (url, params, config = {}) => {
+  // console.log(params);
   let { data } = await Request.get(url, {
     ...config,
     params
@@ -13,7 +14,7 @@ export const get = async (url, params, config = {}) => {
   return data;
 };
 export const post = async (path, data, config = {}) => {
-  console.log(data);
+  // console.log(data);
   return await Request.post(path, qs.stringify(data), config);
 };
 

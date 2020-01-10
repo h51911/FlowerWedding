@@ -1,8 +1,10 @@
 export const getPath = "getPath";
+export const setShopName = "setShopName";
 
 let initState = {
   show: true,
-  currentPath: ""
+  currentPath: "",
+  shopName: ""
 };
 
 const reducer = function(state = initState, { type, payload }) {
@@ -16,6 +18,11 @@ const reducer = function(state = initState, { type, payload }) {
       return {
         ...state,
         currentPath: payload
+      };
+    case setShopName:
+      return {
+        ...state,
+        shopName: payload
       };
     default:
       return state;

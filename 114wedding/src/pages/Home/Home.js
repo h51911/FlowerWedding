@@ -155,7 +155,7 @@ class Home extends Component {
         console.log(key);
     }
     change(kind) {
-        this.props.history.push('/list/' + kind + '/all')
+        this.props.history.push('/list/' + kind + '/全城')
     }
     render() {
         let { datalist } = this.state;

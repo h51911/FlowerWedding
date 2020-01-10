@@ -18,6 +18,21 @@ Router.get("/", async (req, res) => {
   }
 });
 
+//通过id查询商家
+Router.get("/getShop", async (req, res) => {
+  let { id } = req.query;
+  let result = await mongo.find("shopslist", {
+    _id: require("mongodb").ObjectID(id)
+  });
+  if (result.length) {
+    //成功
+    res.send(formatdata({ data: result }));
+  } else {
+    //失败
+    res.send(formatdata({ code: 0 }));
+  }
+});
+
 //列表页分类分页查询
 Router.post("/getList", async (req, res) => {
   let { page, num, kind, area } = req.body;
@@ -25,13 +40,13 @@ Router.post("/getList", async (req, res) => {
   num = parseInt(num);
   let query = null;
   switch (true) {
-    case kind === "all" && area === "all":
+    case kind === "不限" && area === "全城":
       query = {};
       break;
-    case kind === "all":
+    case kind === "不限":
       query = { w_area: area };
       break;
-    case area === "all":
+    case area === "全城":
       query = { w_kind: { $in: kind } };
       break;
     default:

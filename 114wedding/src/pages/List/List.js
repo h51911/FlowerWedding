@@ -14,7 +14,7 @@ class List extends Component {
       kindList: [
         {
           key: 0,
-          name: "不限",
+          name: "0",
           list: [
             "不限",
             "婚纱摄影",
@@ -29,7 +29,7 @@ class List extends Component {
         },
         {
           key: 1,
-          name: "全城",
+          name: "1",
           list: [
             "全城",
             "越秀区",
@@ -49,8 +49,8 @@ class List extends Component {
       ],
       kindName: [
         {
-          name: "all",
-          kind: "all"
+          name: "不限",
+          kind: "不限"
         },
         {
           name: "婚纱摄影",
@@ -124,9 +124,9 @@ class List extends Component {
     let { kind, addr } = this.props.match.params;
 
     if (kindKey === 0) {
-      kind = name === "不限" ? "all" : name;
+      kind = name;
     } else if (kindKey === 1) {
-      addr = name === "全城" ? "all" : name;
+      addr = name;
     } else {
       kindList[kindKey].name = name;
     }
@@ -142,69 +142,17 @@ class List extends Component {
     this.props.history.push("/details/" + gid);
   }
 
-  //获取列表数据
-  // async componentDidMount() {
-  //   let { kind, addr } = this.props.match.params;
-  //   let list = this.state.kindName.filter(item => {
-  //     if (item.name === kind) return item.kind;
-  //   });
-
-  //   if (kind !== "all" || addr !== "all") {
-  //     let kindList = this.state.kindList;
-  //     kindList[0].name = kind === "all" ? "不限" : kind;
-  //     kindList[1].name = addr === "all" ? "全城" : addr;
-  //     this.setState({
-  //       kindList
-  //     });
-  //   }
-
-  //   let { data } = await req.post("/shops/getList", {
-  //     page: 1,
-  //     num: 10,
-  //     kind: list[0].kind,
-  //     area: addr
-  //   });
-
-  //   this.setState({
-  //     shopList: data.data,
-  //     loading: false
-  //   });
-  // }
-
   async componentDidUpdate() {
     let { kindList } = this.state;
     let { kind, addr } = this.props.match.params;
 
-    let flag = true;
-    switch (true) {
-      case kind === "all":
-        flag = kindList[0].name !== "不限";
-        break;
-      case addr === "all":
-        flag = kindList[1].name !== "全城";
-        break;
-      default:
-        if (kindList[0].name !== kind || kindList[1].name !== addr) {
-          flag = true;
-        } else {
-          flag = false;
-        }
-    }
-
-    if (flag) {
-      // let { kind, addr } = this.props.match.params;
+    if (kind !== kindList[0].name || addr !== kindList[1].name) {
       let list = this.state.kindName.filter(item => {
         if (item.name === kind) return item.kind;
       });
 
-      if (kind !== "all" || addr !== "all") {
-        // let kindList = this.state.kindList;
-        kindList[0].name = kind === "all" ? "不限" : kind;
-        kindList[1].name = addr === "all" ? "全城" : addr;
-        this.setState({
-          kindList
-        });
-      }
+      kindList[0].name = kind;
+      kindList[1].name = addr;
 
       let { data } = await req.post("/shops/getList", {
         page: 1,
@@ -214,6 +162,7 @@ class List extends Component {
       });
 
       this.setState({
+        kindList,
         shopList: data.data,
         loading: false
       });
