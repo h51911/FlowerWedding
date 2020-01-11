@@ -1,13 +1,22 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { req } from "../../api";
-import { Icon, Spin } from "antd";
-import { get_Path } from "../../store/actions/common";
+import { req, sever } from "../../api";
+import { message, Icon, Spin } from "antd";
+import { set_ShopName } from "../../store/actions/common";
+
+const success = mes => {
+  message.success(mes);
+};
+
+const error = mes => {
+  message.error(mes);
+};
 
 class Details extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      follow: false,
       shop: {
         w_addr: "地址",
         w_area: "地区",
@@ -21,22 +30,92 @@ class Details extends Component {
         _id: ""
       }
     };
+
+    this.followShop = this.followShop.bind(this);
+    this.bookShop = this.bookShop.bind(this);
   }
 
   async componentDidMount() {
     let { id } = this.props.match.params;
+    let follow = false;
+
+    if (this.props.uesrInfo.phone) {
+      let res = await req.get("/shops/getFollow", {
+        w_id: id,
+        phone: this.props.uesrInfo.phone
+      });
+      if (res.code) {
+        follow = true;
+      }
+    }
 
     let { data } = await req.get("/shops/getShop", {
       id
     });
 
+    this.props.set_ShopName(data[0].w_title);
+
     this.setState({
-      shop: data[0]
+      shop: data[0],
+      follow
     });
   }
 
+  componentWillUnmount(){
+    this.props.set_ShopName('');
+  }
+
+  //关注
+  async followShop() {
+    let { id } = this.props.match.params;
+
+    if (this.props.uesrInfo.phone) {
+      let { data } = await sever.post("/collection/shop", {
+        w_id: id,
+        phone: this.props.uesrInfo.phone
+      });
+
+      if (data.data.mes === "收藏成功") {
+        this.setState({
+          follow: true
+        });
+        success(data.data.mes);
+      } else if (data.data.mes === "已取消收藏") {
+        this.setState({
+          follow: false
+        });
+        success(data.data.mes);
+      } else {
+        error("操作失败");
+      }
+    } else {
+      error("请先登录");
+    }
+  }
+
+  //预约
+  async bookShop() {
+    let { id } = this.props.match.params;
+    if (this.props.uesrInfo.phone) {
+      let { data } = await sever.post("/collection/order", {
+        w_id: id,
+        phone: this.props.uesrInfo.phone
+      });
+
+      if (data.data.mes === "预约成功") {
+        success(data.data.mes);
+      } else if (data.data.mes === "已预约过") {
+        error(data.data.mes);
+      } else {
+        error("操作失败");
+      }
+    } else {
+      error("请先登录");
+    }
+  }
+
   render() {
-    let { shop } = this.state;
+    let { shop, follow } = this.state;
     return (
       <div className="detail-flex">
         <div className="detail-box">
@@ -284,11 +363,19 @@ class Details extends Component {
           </div>
 
           <div className="detail-icon">
-            <Icon
-              type="star"
-              style={{ fontSize: "0.462963rem", color: "#989898" }}
-            />
-            <span>关注</span>
+            {follow ? (
+              <Icon
+                type="star"
+                theme="filled"
+                style={{ fontSize: "0.462963rem", color: "#feeb3c" }}
+              />
+            ) : (
+              <Icon
+                type="star"
+                style={{ fontSize: "0.462963rem", color: "#989898" }}
+              />
+            )}
+            <span onClick={this.followShop}>关注</span>
           </div>
 
           <div className="detail-icon">
@@ -299,7 +386,9 @@ class Details extends Component {
             <span>点评</span>
           </div>
 
-          <p className="detail-btn">免费预约</p>
+          <p className="detail-btn" onClick={this.bookShop}>
+            免费预约
+          </p>
         </div>
       </div>
     );
@@ -308,14 +397,15 @@ class Details extends Component {
 
 const mapStateToProps = state => {
   return {
-    currentPath: state.common.currentPath
+    currentPath: state.common.currentPath,
+    uesrInfo: state.user.uesrInfo
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    get_Path(path) {
-      dispatch(get_Path(path));
+    set_ShopName(name) {
+      dispatch(set_ShopName(name));
     }
   };
 };

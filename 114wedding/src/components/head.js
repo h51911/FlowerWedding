@@ -69,6 +69,9 @@ class Head extends Component {
     //分享
     const share = () => <Icon className="right" type="share-alt" />;
 
+    //商家名字
+    const shop = () => <p>{this.props.shopName}</p>;
+
     //组件渲染规则
     switch (true) {
       case currentPath === "/login": //登录
@@ -84,7 +87,7 @@ class Head extends Component {
         break;
       case currentPath.indexOf("/details/") !== -1: //详情
         LeftIcon = back;
-        MidComponent = title;
+        MidComponent = shop;
         RightIcon = share;
         break;
       default:
@@ -93,6 +96,8 @@ class Head extends Component {
         MidComponent = title;
         RightIcon = empty;
     }
+
+    console.log(this.props.shopName);
     return (
       <div className="head">
         <LeftIcon />
@@ -105,7 +110,8 @@ class Head extends Component {
 
 const mapStateToProps = state => {
   return {
-    currentPath: state.common.currentPath
+    currentPath: state.common.currentPath,
+    shopName: state.common.shopName
   };
 };
 

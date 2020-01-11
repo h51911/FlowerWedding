@@ -98,6 +98,7 @@ class List extends Component {
     this.showKindList = this.showKindList.bind(this);
     this.toShop = this.toShop.bind(this);
     this.changeList = this.changeList.bind(this);
+    this.getMoreShop = this.getMoreShop.bind(this);
   }
 
   //显示分类列表
@@ -134,12 +135,17 @@ class List extends Component {
       show: false
     });
 
-    this.props.history.push("/list/" + kind + "/" + addr);
+    this.props.history.replace("/list/" + kind + "/" + addr);
   }
 
   //跳转详情页
   toShop(gid) {
     this.props.history.push("/details/" + gid);
+  }
+
+  //向下滑动加载更多
+  getMoreShop(e) {
+    // console.log(e);
   }
 
   async componentDidUpdate() {
@@ -187,7 +193,7 @@ class List extends Component {
         </ul>
 
         <Spin size="large" spinning={loading} style={{ height: "100%" }}>
-          <div className="list-content">
+          <div className="list-content" onScroll={this.getMoreShop}>
             <div className={show ? "list-mask" : "list-mask hide"}>
               <ul className="kind-list">
                 {kindList[kindKey].list.map(item => {
@@ -200,7 +206,7 @@ class List extends Component {
               </ul>
             </div>
 
-            <ul className="shop-list">
+            <ul className="shop-list" onTouchMove={this.getMoreShop}>
               {shopList.map(item => {
                 return (
                   <li key={item._id} onClick={this.toShop.bind(null, item._id)}>
