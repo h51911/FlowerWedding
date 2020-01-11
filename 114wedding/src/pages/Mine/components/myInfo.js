@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Icon, Button } from 'antd';
+import { Icon, Button, message } from 'antd';
 import Pop from "../../../components/pop";
 import '../../../css/mine/myinfo.scss'
 import Popgen from '../../../components/pop_gen';
@@ -88,10 +88,15 @@ class MyInfo extends Component {
     }
 
     btnSave = () => {
-        this.props.dispatch({
-            type: 'UP_INFO_ASYNC',
-            payload: this.props.info
-        })
+        if (!this.props.info.nikename.length) {
+            return message.error('请填写昵称');
+        } else {
+            this.props.dispatch({
+                type: 'UP_INFO_ASYNC',
+                payload: this.props.info
+            });
+            return message.success("保存成功");
+        }
     }
 
     logout = () => {
@@ -110,7 +115,7 @@ class MyInfo extends Component {
                         <span>昵称</span>
                         <div className="info">{info.nikename}</div>
                         <span onClick={this.up_nikename}>
-                            {info.nikename ? <em>去填写</em> : "修改"}<Icon type="right" />
+                            {info.nikename.length === 0 ? <em>去填写</em> : "修改"}<Icon type="right" />
                         </span>
                     </li>
                     <li className="info_con">

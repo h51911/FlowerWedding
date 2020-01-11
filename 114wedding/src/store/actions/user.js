@@ -1,6 +1,7 @@
 //状态码
 import { UPDATE_GENDER } from '../reducer/user';//更新性别
 import { UP_NIKENAME } from '../reducer/user';//修改昵称
+import { LOGIN } from '../reducer/user';//修改昵称
 
 export function up_gen(gender) {
     return {
@@ -19,7 +20,15 @@ export function up_n(nikename) {
         }
     }
 }
+export function login(userInfo) {
+    return {
+        type: LOGIN,
+        payload: {
+            userInfo
+        }
+    }
+}
 
 export default {
-    up_gen, up_n
+    up_gen, up_n, login
 }

@@ -2,6 +2,7 @@
 export const UPDATE_GENDER = 'UPDATE_GENDER';
 export const UP_NIKENAME = 'UP_NIKENAME';
 export const UP_INFO = 'UP_INFO';
+export const LOGIN = 'LOGIN';
 
 let uesrInfo = JSON.parse(localStorage.getItem('user'))
 if (uesrInfo === null) {
@@ -12,6 +13,7 @@ if (uesrInfo === null) {
         phone: ""
     }
 }
+
 let authorization = localStorage.getItem('Authorization');
 
 let initState = {
@@ -41,6 +43,12 @@ const reducer = function (state = initState, { type, payload }) {
         case UP_INFO:
             uesrInfo = payload;
             localStorage.setItem('user', JSON.stringify(uesrInfo));
+            return {
+                ...state,
+                uesrInfo
+            }
+        case LOGIN:
+            uesrInfo = JSON.stringify(payload);
             return {
                 ...state,
                 uesrInfo

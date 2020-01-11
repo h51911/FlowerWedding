@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import '../../css/mine/mine.scss';
 import { Icon, Badge } from 'antd';
 import { sever } from '../../api/index';
-// import { login } from '../../store/actions/user';
 
 //将store的数据映射到 UI组件
 const mapStateToProps = state => {
@@ -13,17 +12,11 @@ const mapStateToProps = state => {
         weddingdate: state.user.uesrInfo.weddingdate
     }
 }
-const mapDispatchToProps = dispatch => {
-    return {
-
-    }
-}
 
 class Mine extends Component {
     constructor() {
         super();
         this.state = {
-            // weddingdate: '',
             dis: '',
             info: [
                 {
@@ -68,7 +61,6 @@ class Mine extends Component {
         this.props.history.push(path)
     }
     myInfo = () => {
-        // this.props.history.push('/myinfo')
         this.props.phone.length !== 0 ? this.props.history.push("/myinfo") : this.props.history.push('/login');
     }
     up_date({ target }) {
@@ -84,7 +76,7 @@ class Mine extends Component {
 
     render() {
         console.log(this.props);
-        let { nikename, login, weddingdate } = this.props
+        let { nikename, weddingdate } = this.props
         let { menu, info, dis } = this.state
         return (
             <div className='mine'>
@@ -140,5 +132,5 @@ class Mine extends Component {
     };
 }
 
-Mine = connect(mapStateToProps, mapDispatchToProps)(Mine);
+Mine = connect(mapStateToProps)(Mine);
 export default Mine;

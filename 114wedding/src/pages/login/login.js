@@ -1,4 +1,6 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import { connect } from "react-redux";
+import { login } from "../../store/actions/user"
 import { Form, message, Input, Button, Checkbox } from 'antd';
 import img from '../../doc/login/logo.png';
 import '../../css/login/login.css';
@@ -27,6 +29,7 @@ class Login extends Component {
                     //token写入本地
                     localStorage.setItem("Authorization", data.authorization);
                     localStorage.setItem("user", res);
+                    this.props.dispatch(login(res))
                     this.props.history.push('/home');
                 } else {
                     message.error("验证失败");
@@ -41,7 +44,7 @@ class Login extends Component {
 
     sendcode = async () => {
         let phone = this.props.form.getFieldValue('phone');
-        let { data } = await sever.post('/login/sendcode', { phone: phone });
+        let { data } = await sever.post('/login/sendcode', { phone });
         if (data.code === 1) {
             message.success('发送成功');
         } else {
@@ -50,6 +53,8 @@ class Login extends Component {
     }
 
     render() {
+        console.log(this.props);
+
         const { getFieldDecorator } = this.props.form;
         return <>
             <main className="main1">
@@ -100,6 +105,6 @@ class Login extends Component {
     }
 }
 
-
+Login = connect()(Login);
 const WrappedNormalLoginForm = Form.create({ name: 'normal_login' })(Login);
 export default WrappedNormalLoginForm;

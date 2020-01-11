@@ -31,7 +31,6 @@ Router.route('/verifycode').post(async (req, res) => {
         let token = create(phone);
         //查询手机号
         let res_sear = await mongo.find('user', { phone });
-        // reg(res_sear, phone);
         if (!res_sear.length) {
             let data = [{
                 phone,

@@ -24,29 +24,21 @@ Router.use((req, res, next) => {
 
 //引入子路由模块
 const usersRouter = require("./users");
-const shopsRouter = require("./shops");
 const loginRouter = require("./login");
+const collectionRouter = require("./collection");
 let { verify } = require("../utils/token");
 let { formatdata } = require("../utils/formatdata");
 
 //调用子路由
 Router.use("/users", usersRouter);
-Router.use("/shops", shopsRouter);
 Router.use("/login", loginRouter);
+Router.use("/collection", collectionRouter);
+
+
 //token检验
 Router.post("/verify", (req, res) => {
   let { token } = req.body;
   let result = verify(token);
-  if (result) {
-    //可以直接登陆
-    res.send(formatdata());
-  } else {
-    res.send(formatdata({ code: 0 }));
-  }
-});
-Router.post("/aa", (req, res) => {
-  console.log(req.body);
-  let result = 1;
   if (result) {
     //可以直接登陆
     res.send(formatdata());
