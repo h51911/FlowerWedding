@@ -26,6 +26,7 @@ Router.use((req, res, next) => {
 const usersRouter = require("./users");
 const loginRouter = require("./login");
 const shopsRouter = require("./shops");
+const adminsRouter = require("./admins");
 const collectionRouter = require("./collection");
 let { verify } = require("../utils/token");
 let { formatdata } = require("../utils/formatdata");
@@ -34,6 +35,7 @@ let { formatdata } = require("../utils/formatdata");
 Router.use("/users", usersRouter);
 Router.use("/shops", shopsRouter);
 Router.use("/login", loginRouter);
+Router.use("/admins", adminsRouter);
 Router.use("/collection", collectionRouter);
 
 
