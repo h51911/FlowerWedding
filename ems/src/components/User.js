@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import '../css/merchant/merchant.css'
+import { sever } from '../api/index'
 
 import { Table, Button } from 'antd';
 
@@ -40,22 +41,17 @@ class User extends Component {
                 weddingdate: 1578482575992.0,
                 nikename: "15574270092"
             },
-            {
-                _id: "5e15bb90113093151414876a",
-                phone: "15574270092",
-                gender: "男",
-                weddingdate: 1578482575992.0,
-                nikename: "15574270092"
-            },
-            {
-                _id: "5e15bb90113093151414876a",
-                phone: "15574270092",
-                gender: "男",
-                weddingdate: 1578482575992.0,
-                nikename: "15574270092"
-            },
         ]
     };
+
+
+    async componentDidMount() {
+        let { data } = await sever.get('/users');
+        //console.log("data:", data);
+        this.setState({
+            list: data
+        })
+    }
 
     start = () => {
         this.setState({ loading: true });
@@ -99,7 +95,9 @@ class User extends Component {
                     <Table
                         rowSelection={rowSelection}
                         columns={columns}
-                        dataSource={this.state.list} />
+                        dataSource={this.state.list}
+                        rowKey="_id"
+                    />
                 </div>
             </>
         )

@@ -37,11 +37,45 @@ body {
   display: block;
 }
 
+#index-page {
+  height: 100%;
+  overflow-y: auto;
+}
+
+.Helmet {
+  width: 100%;
+  height: 1.222222rem;
+  background-color: rgba(255, 65, 99, 0);
+  position: absolute;
+  z-index: 999;
+  opacity: 1;
+}
+
+.Helmet .adder {
+  width: 1.759259rem;
+  height: 1.222222rem;
+  line-height: 1.222222rem;
+  color: #fff;
+  font-size: .37037rem;
+  float: left;
+  text-align: center;
+  margin-left: 10px;
+}
+
+.Helmet .information {
+  float: right;
+  color: #fff;
+  font-size: .37037rem;
+  width: 1.759259rem;
+  height: 1.222222rem;
+  line-height: 1.222222rem;
+  text-align: center;
+}
+
 .main {
   width: 100%;
   position: relative;
   top: -0.555556rem;
-  padding-bottom: 1.925926rem;
 }
 
 .main .nav ul {

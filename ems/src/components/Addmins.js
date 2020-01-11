@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import '../css/merchant/merchant.css'
+import { sever } from '../api/index'
 
 import { Table, Button } from 'antd';
 
@@ -24,28 +25,22 @@ class Addmins extends Component {
         loading: false,
         list: [
             {
-                _id: "5e15bb90113093151414876a",
+                _id: "5e15bb901130931514142876a",
                 username: "15574270092",
                 password: "123456",
-            },
-            {
-                _id: "5e15bb90113093151414876a",
-                username: "18580678470",
-                password: "123456",
-            },
-            {
-                _id: "5e15bb90113093151414876a",
-                username: "18873423820",
-                password: "123456",
-            },
-            {
-                _id: "5e15bb90113093151414876a",
-                username: "15574270092",
-                password: "123456",
-            },
+            }
 
         ]
     };
+
+
+    async componentDidMount() {
+        let { data } = await sever.get('/admins');
+        //console.log("data:", data);
+        this.setState({
+            list: data
+        })
+    }
 
     start = () => {
         this.setState({ loading: true });
@@ -89,7 +84,9 @@ class Addmins extends Component {
                     <Table
                         rowSelection={rowSelection}
                         columns={columns}
-                        dataSource={this.state.list} />
+                        dataSource={this.state.list}
+                        rowKey="_id"
+                    />
                 </div>
             </>
         )

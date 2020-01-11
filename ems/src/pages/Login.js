@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Form, Icon, Input, Button, Checkbox } from 'antd';
+import { sever } from '../api/index'
 
 import '../css/login/login.css'
 //import img1 from '../doc/logo/bgimg.jpg'
@@ -11,15 +12,23 @@ class Login extends Component {
             title: ''
         }
     }
-    handleSubmit = e => {
+    handleSubmit = async e => {
         e.preventDefault();
-        this.props.form.validateFields((err, values) => {
+        this.props.form.validateFields(async (err, values) => {
             if (!err) {
-                console.log('Received values of form: ', values);
+                //console.log('Received values of form: ', values);
                 let username = this.props.form.getFieldValue('username');
+                let password = this.props.form.getFieldValue('password');
                 //console.log('username' + username)
-                this.props.history.push('/home', { username })
+                //this.props.history.push('/home', { username });
 
+                let { data } = await sever.post('/admins', { username, password });
+                if (data.code === 1) {
+                    this.props.history.push({ pathname: "/home", query: { username } });
+                } else {
+                    alert("请输入正确的账号密码！")
+                }
+                console.log(data, username);
             }
         });
     };
@@ -55,7 +64,10 @@ class Login extends Component {
                                 valuePropName: 'checked',
                                 initialValue: false,
                             })(<Checkbox>七天免登陆</Checkbox>)}
-                            <Button type="primary" htmlType="submit" className="login-form-button">
+                            <Button
+                                type="primary"
+                                htmlType="submit"
+                                className="login-form-button">
                                 登录
                         </Button>
                         </Form.Item>

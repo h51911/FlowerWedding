@@ -1,10 +1,14 @@
 import React, { Component } from 'react';
-import { Carousel, Row, Col, Tabs } from 'antd';
+import { Carousel, Row, Col, Tabs, Icon, Input } from 'antd';
 
 import Tablist from './Tablist'
 import '../../css/encycl/encycl.css'
 
 const { TabPane } = Tabs;
+const { Search } = Input;
+
+let position = 5  //判断位置
+let opacity = 0
 class Encycl extends Component {
     state = {
         datalist1: [
@@ -198,13 +202,66 @@ class Encycl extends Component {
         //console.log(key);
     }
 
+    slide(ev) {
+        //头部
+        let head = document.getElementsByClassName('Helmet')[0]
+        if (ev.srcElement.scrollTop > position) {//向下滑动
+            if (ev.srcElement.scrollTop > 5 && ev.srcElement.scrollTop < 600) {
+                //修改透明度
+                opacity = Number(opacity > 1 ? 1 : (opacity + 0.03).toFixed(2));
+                head.style.backgroundColor = 'rgba(255, 65, 99, ' + opacity + ')';
+            }
+            //到达临界值直接不透明
+            else if (ev.srcElement.scrollTop > 600) {
+                head.style.backgroundColor = 'rgba(255, 65, 99, 1)'
+                opacity = 1
+            }
+        } else {
+            if (ev.srcElement.scrollTop > 5 && ev.srcElement.scrollTop < 600) {
+                opacity = opacity < 0 ? 0 : Number((opacity - 0.03).toFixed(2))
+                head.style.backgroundColor = 'rgba(255, 65, 99, ' + opacity + ')'
+
+            }
+            //到达临界值直接透明
+            else if (ev.srcElement.scrollTop < 10) {
+                head.style.backgroundColor = 'rgba(255, 65, 99, 0)'
+                opacity = 0
+            }
+        }
+        //定时器，异步设置当前位置判断值
+        setTimeout(() => {
+            position = ev.srcElement.scrollTop
+        }, 0);
+    }
+
+    componentDidMount() {
+
+        document.getElementById('index-page').addEventListener('scroll', this.slide, false
+        )
+    }
+
+    componentWillUnmount() {
+
+        document.getElementById('index-page').removeEventListener('scroll', this.slide, false
+        )
+    }
 
     render() {
         let { datalist1 } = this.state;
         let { list1 } = this.state;
 
         let { data } = this.state;
-        return <>
+        return <div id="index-page">
+            <header className="Helmet">
+                <div className="search">
+                    <Search
+                        placeholder="你想知道的婚嫁百科"
+                        onSearch={value => console.log(value)}
+                        style={{ width: '100%', height: '' }}
+                    />
+
+                </div>
+            </header>
             <div className="header">
                 <Carousel autoplay>
                     {datalist1.map((item, index) => (
@@ -264,7 +321,7 @@ class Encycl extends Component {
                 </section>
             </div >
 
-        </>
+        </div>
     }
 
 

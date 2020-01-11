@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import '../css/merchant/merchant.css'
+import { sever } from '../api/index'
 
 import { Table, Button } from 'antd';
 
@@ -68,30 +69,7 @@ class Merchant extends Component {
         loading: false,
         list: [
             {
-                _id: "5e157809dad0599b6d83137a",
-                w_name: "广州古摄影",
-                w_img: "https://pic11.wed114.cn/pic9/201902/2019022716082027141878x300_300_0.jpg",
-                w_kind: "婚纱影楼",
-                w_area: "越秀区",
-                w_infoBox: "在线预约｜送定制情侣对戒+送件上门",
-                w_comment: 1475,
-                w_difficulty: 2,
-                w_title: "广州古摄影",
-                w_addr: "芳村大道东146号宏信922创意园"
-            },
-            {
-                _id: "5e157809dad0599b6d83137a",
-                w_name: "广州古摄影",
-                w_img: "https://pic11.wed114.cn/pic9/201902/2019022716082027141878x300_300_0.jpg",
-                w_kind: "婚纱影楼",
-                w_area: "越秀区",
-                w_infoBox: "在线预约｜送定制情侣对戒+送件上门",
-                w_comment: 1475,
-                w_difficulty: 2,
-                w_title: "广州古摄影",
-                w_addr: "芳村大道东146号宏信922创意园"
-            }, {
-                _id: "5e157809dad0599b6d83137a",
+                _id: "5e157809dad0599b6d831371a",
                 w_name: "广州古摄影",
                 w_img: "https://pic11.wed114.cn/pic9/201902/2019022716082027141878x300_300_0.jpg",
                 w_kind: "婚纱影楼",
@@ -105,6 +83,13 @@ class Merchant extends Component {
         ]
     };
 
+    async componentDidMount() {
+        let { data } = await sever.get('/shops');
+        console.log("data:", data);
+        this.setState({
+            list: data
+        })
+    }
     start = () => {
         this.setState({ loading: true });
         // ajax request after empty completing
@@ -128,7 +113,10 @@ class Merchant extends Component {
             onChange: this.onSelectChange,
         };
         const hasSelected = selectedRowKeys.length > 0;
+
+
         return (
+
             <>
                 <div className="title1">商家列表信息管理</div>
                 <div>
@@ -147,7 +135,9 @@ class Merchant extends Component {
                     <Table
                         rowSelection={rowSelection}
                         columns={columns}
-                        dataSource={this.state.list} />
+                        dataSource={this.state.list}
+                        rowKey="_id"
+                    />
                 </div>
             </>
         )

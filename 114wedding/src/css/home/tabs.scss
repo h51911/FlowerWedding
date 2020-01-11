@@ -20,12 +20,19 @@ body {
     flex-direction: column;
     justify-content: space-around;
     margin-left: .462963rem;
+    color: #000;
 
     .video {
         width: 9.12037rem;
         height: 6.037037rem;
         border-radius: .462963rem .462963rem;
         background: seagreen;
+        overflow: hidden;
+
+        img {
+            width: 100%;
+            height: 100%;
+        }
     }
 
     .title {
@@ -42,13 +49,19 @@ body {
             background: #ffe9eb;
             border-radius: .462963rem .462963rem;
             float: left;
-            font-size: .259259rem;
+            font-size: 10px;
             text-align: center;
             color: #e5515f;
+            white-space: nowrap;
+            overflow: hidden;
         }
 
         p {
             float: left;
+            font-size: 16px;
+            width: 7.407407rem;
+            white-space: nowrap;
+            overflow: hidden;
         }
 
     }
@@ -57,5 +70,14 @@ body {
         width: 100%;
         height: .324074rem;
         font-size: .277778rem;
+    }
+
+    .price {
+        float: right;
+        position: relative;
+        top: -14px;
+        left: 7.407407rem;
+        color: #e5515f;
+        font-size: 16px;
     }
 }

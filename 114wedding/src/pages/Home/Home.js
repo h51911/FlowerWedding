@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Carousel, Row, Col, Tabs } from 'antd';
+import { Carousel, Tabs, Icon } from 'antd';
+
 
 import '../../css/home/home.css'
 import Tab from './Tabs'
@@ -7,6 +8,8 @@ import img1 from '../../doc/home/left.png'
 import img2 from '../../doc/home/right.png'
 
 const { TabPane } = Tabs;
+let position = 5  //判断位置
+let opacity = 0
 
 
 class Home extends Component {
@@ -139,12 +142,95 @@ class Home extends Component {
                     title: '儿童摄影'
                 },
             ],
-            kind: ""
+            kind: "",
+            data: [{
+                url: "https://pic11.wed114.cn/pic/20181204/2018120414511063967210x600_400_0.jpg",
+                genre: "婚纱影楼",
+                title: "推荐｜百大全新主题，万平6星级场景任",
+                adder: "越秀区",
+                text: "广州古摄影",
+                comment: "1501",
+                price: "5699"
+            },
+            {
+                url: "https://pic11.wed114.cn/pic/20191125/2019112513581126724560x600_400_0.jpg",
+                genre: "婚纱影楼",
+                title: "格林童话夜 零距离体验童话梦话",
+                adder: "天河区",
+                text: "爱城婚纱摄影",
+                comment: "108",
+                price: "7999"
+            },
+            {
+                url: "https://pic11.wed114.cn/pic/20191125/2019112513581126724560x600_400_0.jpg",
+                genre: "摄影工作室",
+                title: "格林童话夜 零距离体验童话梦话",
+                adder: "番禺区",
+                text: "广州爱城婚纱摄影",
+                comment: "599",
+                price: "7999"
+            },
+            {
+                url: "https://pic11.wed114.cn/pic/20191004/2019100410583464159462x600_400_0.jpg",
+                genre: "摄影工作室",
+                title: "【疼老婆 专线】 梦幻森系|倾情打",
+                adder: "越秀区",
+                text: "广州田野摄影",
+                comment: "1234",
+                price: "5990"
+            },
+            {
+                url: "https://pic11.wed114.cn/pic/20190802/2019080210483885994649x600_400_0.jpg",
+                genre: "婚纱影楼",
+                title: "三亚：8服8造3天2晚住宿+三亚湾、红塘湾拍摄",
+                adder: "海珠区",
+                text: "甜蜜海岸广州",
+                comment: "4",
+                price: "5999"
+            },
+            {
+                url: "https://pic11.wed114.cn/pic/20190113/2019011320105224466586x600_400_0.jpg",
+                genre: "婚纱影楼",
+                title: "店长推荐",
+                adder: "天河区",
+                text: "秋田映像",
+                comment: "3",
+                price: "6999"
+            },
+            {
+                url: "https://pic11.wed114.cn/pic/20190521/2019052115505183162396x600_400_0.jpg",
+                genre: "婚纱影楼",
+                title: "12服12造两天森系小清新暗黑系风红",
+                adder: "番禺区",
+                text: "番禺米兰婚纱",
+                comment: "8",
+                price: "5999"
+            },
+            {
+                url: "https://pic11.wed114.cn/pic/20191129/2019112915560932509555x600_400_0.jpg",
+                genre: "婚纱影楼",
+                title: "【人气爆款】爱尔兰马场 骑士风格婚",
+                adder: "越秀区",
+                text: "广州金夫人婚纱",
+                comment: "6",
+                price: "6388"
+            },
+            {
+                url: "https://pic11.wed114.cn/pic/20190807/2019080716504092909504x600_400_0.jpg",
+                genre: "婚纱影楼",
+                title: "店长推荐C套系",
+                adder: "荔湾区",
+                text: "完美嫁衣摄影",
+                comment: "6",
+                price: "7968"
+            }
+            ]
 
 
             //this.callback = this.callback.bind(this);
         }
         this.change = this.change.bind(this);
+        //this.slide = this.slide.bind(this);
 
         let kind = this.state.list[0].text;
 
@@ -157,12 +243,67 @@ class Home extends Component {
     change(kind) {
         this.props.history.push('/list/' + kind + '/全城')
     }
+
+    slide(ev) {
+        //头部
+        let head = document.getElementsByClassName('Helmet')[0]
+        if (ev.srcElement.scrollTop > position) {//向下滑动
+            if (ev.srcElement.scrollTop > 5 && ev.srcElement.scrollTop < 600) {
+                //修改透明度
+                opacity = Number(opacity > 1 ? 1 : (opacity + 0.03).toFixed(2));
+                head.style.backgroundColor = 'rgba(255, 65, 99, ' + opacity + ')';
+            }
+            //到达临界值直接不透明
+            else if (ev.srcElement.scrollTop > 600) {
+                head.style.backgroundColor = 'rgba(255, 65, 99, 1)'
+                opacity = 1
+            }
+        } else {
+            if (ev.srcElement.scrollTop > 5 && ev.srcElement.scrollTop < 600) {
+                opacity = opacity < 0 ? 0 : Number((opacity - 0.03).toFixed(2))
+                head.style.backgroundColor = 'rgba(255, 65, 99, ' + opacity + ')'
+
+            }
+            //到达临界值直接透明
+            else if (ev.srcElement.scrollTop < 10) {
+                head.style.backgroundColor = 'rgba(255, 65, 99, 0)'
+                opacity = 0
+            }
+        }
+        //定时器，异步设置当前位置判断值
+        setTimeout(() => {
+            position = ev.srcElement.scrollTop
+        }, 0);
+    }
+
+    componentDidMount() {
+
+        document.getElementById('index-page').addEventListener('scroll', this.slide, false
+        )
+    }
+
+    componentWillUnmount() {
+
+        document.getElementById('index-page').removeEventListener('scroll', this.slide, false
+        )
+    }
+
     render() {
         let { datalist } = this.state;
         let { list } = this.state;
         let { listvideo } = this.state;
         let { menu } = this.state;
-        return <>
+        let { data } = this.state;
+        return <div id="index-page">
+            <header className="Helmet">
+                <div className="adder">
+                    广州
+                    <i><Icon type="environment" /></i>
+                </div>
+                <div className="information">
+                    <Icon type="mail" />
+                </div>
+            </header>
             <div className="header">
                 <Carousel autoplay>
                     {datalist.map((item, index) => (
@@ -173,7 +314,9 @@ class Home extends Component {
                 </Carousel>
             </div>
             <main className="main">
+
                 <section className="nav">
+
                     <ul>{list.map((item, index) => (
                         <li onClick={this.change.bind(null, item.text)} key={item.id} >
                             <img src={item.url} />
@@ -237,7 +380,7 @@ class Home extends Component {
                     <div className="itemBox">
                         <div className="Box">
                             {listvideo.map((item, index) => (
-                                <div className="wrapper" key={item.num}>
+                                <div className="wrapper" key={item.num} onClick={this.change}>
                                     <div className="itemVideo">
                                         <img src={item.url} />
                                     </div>
@@ -262,19 +405,13 @@ class Home extends Component {
                         onChange={this.callback}>
                         {menu.map((item, index) => (
                             <Tabs.TabPane tab={item.title} key={index}>
-                                <Tab />
+                                <Tab data={data} change={this.change} />
                             </Tabs.TabPane>
                         ))}
                     </Tabs>
                 </section>
-
-                <section>
-                    <button onClick={() => {
-                        this.props.history.push('/login')
-                    }}>登录</button>
-                </section>
             </main>
-        </>
+        </div>
     }
 }
 export default Home;

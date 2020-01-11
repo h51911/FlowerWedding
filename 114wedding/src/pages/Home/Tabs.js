@@ -1,20 +1,32 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
-
+import { Icon } from 'antd';
 import '../../css/home/tabs.css'
 
-const Tabs = () => {
+const Tabs = ({ data, change }) => {
+
     return (
         <>
-            <section>
-                <div className="tabVideo">
-                    <div className="video"></div>
-                    <div className="title">
-                        <span>婚纱影楼</span>
-                        <p>【总监定制】场景任选+底片全送</p>
+            <section>{data.map((item, index) => (
+                <div className="tabVideo" key={item.comment} onClick={change}>
+                    <div className="video">
+                        <img src={item.url} />
                     </div>
-                    <div className="site">天河区&nbsp; | &nbsp;广州钟爱一生</div>
+                    <div className="title">
+                        <span>{item.genre}</span>
+                        <p>{item.title}</p>
+                    </div>
+                    <div className="site">
+                        {item.adder}&nbsp; | &nbsp;
+                        {item.text} &nbsp;&nbsp;
+                        <Icon type="message" />
+                        {item.comment}条</div>
+                    <div className="price">
+                        ￥{item.price}
+                    </div>
                 </div>
+            ))}
+
             </section>
 
         </>

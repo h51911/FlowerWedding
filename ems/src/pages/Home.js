@@ -15,7 +15,7 @@ const { Header, Content, Sider } = Layout;
 
 var cont = {
     border: '1px solid #ccc',
-    'margin-left': '5px',
+    marginLeft: '5px',
     padding: '10px 10px'
 }
 
@@ -24,9 +24,18 @@ class Home extends Component {
         super(props);
         this.state = {
             collapsed: false,
+            //username: this.props.location.query.username
         };
+        //console.log(username);
+
     }
 
+
+    componentDidUpdate() {
+        let { query } = this.props.location;
+        console.log(query);
+
+    }
 
     toggle = () => {
         this.setState({
@@ -42,7 +51,7 @@ class Home extends Component {
                         <div className="logo" ><img src={img1} /></div>
                         <div className="logout">退出</div>
                         <div className="title">
-                            <p>欢迎<span>15574270092</span>用户登录系统</p>
+                            <p>欢迎<span>{this.state.username}</span>用户登录系统</p>
                         </div>
 
                     </Header>
