@@ -25,6 +25,7 @@ Router.use((req, res, next) => {
 //引入子路由模块
 const usersRouter = require("./users");
 const loginRouter = require("./login");
+const shopsRouter = require("./shops");
 const collectionRouter = require("./collection");
 let { verify } = require("../utils/token");
 let { formatdata } = require("../utils/formatdata");
