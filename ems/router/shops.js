@@ -62,4 +62,30 @@ Router.post("/getList", async (req, res) => {
     res.send(formatdata({ code: 0 }));
   }
 });
+
+//判断商家是否已收藏
+Router.get("/getFollow", async (req, res) => {
+  // let result = await mongo.find("shops", req.query);
+  // if (result.length) {
+  //   //成功
+  //   res.send(formatdata({ result: 1 }));
+  // } else {
+  //   //失败
+  //   res.send(formatdata({ code: 0 }));
+  // }
+  console.log(req.params)
+  res.send(formatdata({ code: 1 }));
+});
+
+Router.use('/book', async (req, res) => {
+  let result = await mongo.find("shops", req.query);
+  if (result.length) {
+    //成功
+    res.send(formatdata({ result: 1 }));
+  } else {
+    //失败
+    res.send(formatdata({ code: 0 }));
+  }
+})
+
 module.exports = Router;
