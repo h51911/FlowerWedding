@@ -13,7 +13,7 @@ Router.post('/', async (req, res) => {
         res.send(formatdata({ code: 0 }))
     }
 });
-console.log(username, password);
+//console.log(username, password);
 
 
 //查询
@@ -25,5 +25,7 @@ Router.get('/', async (req, res) => {
         res.send(formatdata({ code: 0 }))
     }
 });
+
+
 
 module.exports = Router;

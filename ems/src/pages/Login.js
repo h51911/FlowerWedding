@@ -24,11 +24,12 @@ class Login extends Component {
 
                 let { data } = await sever.post('/admins', { username, password });
                 if (data.code === 1) {
-                    this.props.history.push({ pathname: "/home", query: { username } });
+                    this.props.history.push("/home");
+                    localStorage.setItem("username", username);
                 } else {
                     alert("请输入正确的账号密码！")
                 }
-                console.log(data, username);
+                //console.log(data, username);
             }
         });
     };

@@ -404,8 +404,8 @@ class Home extends Component {
                         tabPosition='top'
                         onChange={this.callback}>
                         {menu.map((item, index) => (
-                            <Tabs.TabPane tab={item.title} key={index}>
-                                <Tab data={data} change={this.change} />
+                            <Tabs.TabPane tab={item.title} key={item.title}>
+                                <Tab data={data} change={this.change} index={index}/>
                             </Tabs.TabPane>
                         ))}
                     </Tabs>

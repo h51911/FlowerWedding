@@ -45,31 +45,43 @@ body {
 
 .tabVideo .title span {
   display: block;
-  width: 1.388889rem;
   height: .527778rem;
   line-height: .527778rem;
   background: #ffe9eb;
   border-radius: .462963rem .462963rem;
   float: left;
-  font-size: 10px;
+  font-size: .277778rem;
   text-align: center;
-  color: #e5515f;
+  color: red;
   white-space: nowrap;
   overflow: hidden;
+  margin-right: .185185rem;
+  padding: 0rem .138889rem;
 }
 
 .tabVideo .title p {
   float: left;
   font-size: 16px;
-  width: 7.407407rem;
+  width: 7rem;
   white-space: nowrap;
   overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .tabVideo .site {
   width: 100%;
   height: .324074rem;
   font-size: .277778rem;
+  color: #999;
+}
+
+.tabVideo .site span {
+  margin-left: .092593rem;
+  background: #000;
+  border-radius: .092593rem 0 .092593rem 0;
+  padding: 0rem .092593rem;
+  color: #efd7b1;
+  font-weight: 600;
 }
 
 .tabVideo .price {

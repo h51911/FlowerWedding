@@ -44,7 +44,6 @@ class Addmins extends Component {
 
     start = () => {
         this.setState({ loading: true });
-        // ajax request after empty completing
         setTimeout(() => {
             this.setState({
                 selectedRowKeys: [],

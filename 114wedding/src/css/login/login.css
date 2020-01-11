@@ -19,6 +19,10 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  /* .ant-btn {
+        position: relative;
+        top: -0.8rem;
+    } */
 }
 
 .main1 .logo {
@@ -94,11 +98,6 @@ body {
   position: relative;
   top: -1.092593rem;
   font-size: .324074rem;
-}
-
-.main1 .ant-btn {
-  position: relative;
-  top: -0.8rem;
 }
 
 .main1 .ant-checkbox-wrapper {

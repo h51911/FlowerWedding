@@ -5,6 +5,8 @@ import { Layout, Menu, Breadcrumb, Icon } from 'antd';
 import User from '../components/User';
 import Merchant from '../components/Merchant';
 import Addmins from '../components/Addmins';
+import Appointment from '../components/Appointment';
+import Attention from '../components/Attention';
 
 import '../css/home/home.css';
 
@@ -24,17 +26,31 @@ class Home extends Component {
         super(props);
         this.state = {
             collapsed: false,
-            //username: this.props.location.query.username
+            username: ''
         };
-        //console.log(username);
-
+        this.change = this.change.bind(this);
     }
 
 
-    componentDidUpdate() {
-        let { query } = this.props.location;
-        console.log(query);
+    componentDidMount() {
+        setTimeout(() => {
+            let username = JSON.parse(localStorage.getItem('username'));
+            if (!this.username) {
+                //console.log(username);
+                this.setState({
+                    username
+                })
+            }
+        }, 0);
 
+
+    }
+    componentWillUnmount() {
+        localStorage.removeItem('username')
+    }
+
+    change() {
+        this.props.history.push("/login");
     }
 
     toggle = () => {
@@ -49,9 +65,9 @@ class Home extends Component {
                 <Layout>
                     <Header className="header">
                         <div className="logo" ><img src={img1} /></div>
-                        <div className="logout">退出</div>
+                        <div className="logout" onClick={this.change}>退出</div>
                         <div className="title">
-                            <p>欢迎<span>{this.state.username}</span>用户登录系统</p>
+                            <p>欢迎&nbsp;<span>{this.state.username}</span>&nbsp;用户登录系统</p>
                         </div>
 
                     </Header>
@@ -83,6 +99,12 @@ class Home extends Component {
                                         <Menu.Item key="3">
                                             <NavLink to='/home/addmins'>后台用户信息</NavLink>
                                         </Menu.Item>
+                                        <Menu.Item key="4">
+                                            <NavLink to='/home/appointment'>预约用户信息</NavLink>
+                                        </Menu.Item>
+                                        <Menu.Item key="5">
+                                            <NavLink to='/home/attention'>关注商家信息</NavLink>
+                                        </Menu.Item>
 
                                     </SubMenu>
 
@@ -92,6 +114,8 @@ class Home extends Component {
                                 <Route exact path='/home/user' component={User} />
                                 <Route exact path='/home/merchant' component={Merchant} />
                                 <Route exact path='/home/addmins' component={Addmins} />
+                                <Route exact path='/home/appointment' component={Appointment} />
+                                <Route exact path='/home/attention' component={Attention} />
                                 <Redirect from="/" to="/home/user" exact />
                             </Content>
                         </Layout>

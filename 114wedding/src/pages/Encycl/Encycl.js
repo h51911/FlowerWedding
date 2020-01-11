@@ -311,8 +311,8 @@ class Encycl extends Component {
                     <Tabs defaultActiveKey="1" onChange={this.callback}>
                         {data.map((item, index) => (
                             <Tabs.TabPane tab={item.title} key={item.id}>
-                                {item.datalist1.map((ele) => (
-                                    <Tablist ele={ele} />
+                                {item.datalist1.map((ele, index) => (
+                                    <Tablist ele={ele} index={index} key={index + "58"} />
                                 ))}
 
                             </Tabs.TabPane>

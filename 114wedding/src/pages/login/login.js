@@ -6,6 +6,8 @@ import img from '../../doc/login/logo.png';
 import '../../css/login/login.css';
 import { sever } from '../../api/index';
 
+const { Search } = Input;
+
 class Login extends Component {
     constructor() {
         super();
@@ -53,7 +55,7 @@ class Login extends Component {
     }
 
     render() {
-        console.log(this.props);
+        //console.log(this.props);
 
         const { getFieldDecorator } = this.props.form;
         return <>
@@ -80,7 +82,7 @@ class Login extends Component {
                             {getFieldDecorator('text', {
                                 rules: [{ required: true, message: '请输入正确的验证码' }],
                             })(
-                                <Input placeholder="请输入验证码" />,
+                                <Search placeholder="请输入验证码" enterButton="验证码" onSearch={this.sendcode} />,
                             )}
                         </Form.Item>
                         <Form.Item>
@@ -96,7 +98,7 @@ class Login extends Component {
                                 登录
                             </Button>
                         </Form.Item>
-                        < span className="verification-code" onClick={this.sendcode}>获取验证码</span>
+                        {/* < span className="verification-code" onClick={this.sendcode}>获取验证码</span> */}
                     </Form>
                 </div>
             </main>

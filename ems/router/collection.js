@@ -2,7 +2,7 @@
  * baseurl:/collection/
  * /shops  查询所有预约  get
  * /shops?phone=18818428921 查询用户18818428921预约 get
- * /shops  查询所有用户关注商铺  get
+ * /orders  查询所有用户关注商铺  get
  * /shops?phone=18818428921 查询用户18818428921关注商铺  get   
  */
 const express = require("express");
