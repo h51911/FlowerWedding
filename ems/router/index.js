@@ -31,6 +31,7 @@ let { formatdata } = require("../utils/formatdata");
 
 //调用子路由
 Router.use("/users", usersRouter);
+Router.use("/shops", shopsRouter);
 Router.use("/login", loginRouter);
 Router.use("/collection", collectionRouter);
 
