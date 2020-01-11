@@ -63,14 +63,14 @@ Router.post('/reg', async (req, res) => {
 Router.post('/delete', async (req, res) => {
     let { id } = req.body
 
-    id.forEach(item => {
-        let result = await mongo.remove('user', { _id: item._id });
+    for (let i = 0; i < id.length; i++) {
+        let result = await mongo.remove('user', { _id: id[i]._id });
         if (result) {
             res.send(formatdata({ data: result }))
         } else {
             res.send(formatdata({ code: 0 }))
         }
-    })
+    }
 
 
 });
