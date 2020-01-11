@@ -44,6 +44,7 @@ class Details extends Component {
         w_id: id,
         phone: this.props.uesrInfo.phone
       });
+      console.log(res)
       if (res.code) {
         follow = true;
       }
@@ -61,7 +62,7 @@ class Details extends Component {
     });
   }
 
-  componentWillUnmount(){
+  componentWillUnmount() {
     this.props.set_ShopName('');
   }
 
@@ -370,11 +371,11 @@ class Details extends Component {
                 style={{ fontSize: "0.462963rem", color: "#feeb3c" }}
               />
             ) : (
-              <Icon
-                type="star"
-                style={{ fontSize: "0.462963rem", color: "#989898" }}
-              />
-            )}
+                <Icon
+                  type="star"
+                  style={{ fontSize: "0.462963rem", color: "#989898" }}
+                />
+              )}
             <span onClick={this.followShop}>关注</span>
           </div>
 

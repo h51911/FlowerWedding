@@ -44,9 +44,7 @@ export function myorder(myorders, myshops) {
 export function login(userInfo) {
     return {
         type: LOGIN,
-        payload: {
-            userInfo
-        }
+        payload: userInfo
     }
 }
 

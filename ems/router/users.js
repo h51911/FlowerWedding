@@ -16,6 +16,8 @@
        * 修改密码
        * 查询所有用户
 */
+const { data } = require("../data/data.json");
+
 const express = require('express');
 let { formatdata } = require('../utils/formatdata');
 const Router = express.Router();
@@ -60,20 +62,17 @@ Router.post('/reg', async (req, res) => {
 
 
 //删除
-Router.post('/delete', async (req, res) => {
-    let { id } = req.body
-
-    for (let i = 0; i < id.length; i++) {
-        let result = await mongo.remove('user', { _id: id[i]._id });
-        if (result) {
-            res.send(formatdata({ data: result }))
-        } else {
-            res.send(formatdata({ code: 0 }))
-        }
-    }
-
-
-});
+// Router.post('/delete', async (req, res) => {
+//     let { id } = req.body
+//     for (let i = 0; i < id.length; i++) {
+//         let result = await mongo.remove('user', { _id: id[i]._id });
+//         if (result) {
+//             res.send(formatdata({ data: result }))
+//         } else {
+//             res.send(formatdata({ code: 0 }))
+//         }
+//     }
+// });
 
 //修改用户相关数据
 Router.post('/updateuser', async (req, res) => {
@@ -86,6 +85,8 @@ Router.post('/updateuser', async (req, res) => {
     }
 });
 
-
+Router.get('/data', (req, res) => {
+    res.send(JSON.stringify(data));
+});
 
 module.exports = Router;

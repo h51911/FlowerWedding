@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Spin } from "antd";
-import { req } from "../../api";
+import { req, sever } from "../../api";
 import DropdownMenu from "./DropdownMenu";
 import "../../css/list/List.css";
 
@@ -162,7 +162,7 @@ class List extends Component {
 
       let { data } = await req.post("/shops/getList", {
         page: 1,
-        num: 10,
+        num: 100,
         kind: list[0].kind,
         area: addr
       });

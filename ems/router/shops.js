@@ -36,6 +36,7 @@ Router.get("/getShop", async (req, res) => {
 //列表页分类分页查询
 Router.post("/getList", async (req, res) => {
   let { page, num, kind, area } = req.body;
+  console.log(666)
   let index = (page - 1) * num;
   num = parseInt(num);
   let query = null;
@@ -65,16 +66,14 @@ Router.post("/getList", async (req, res) => {
 
 //判断商家是否已收藏
 Router.get("/getFollow", async (req, res) => {
-  // let result = await mongo.find("shops", req.query);
-  // if (result.length) {
-  //   //成功
-  //   res.send(formatdata({ result: 1 }));
-  // } else {
-  //   //失败
-  //   res.send(formatdata({ code: 0 }));
-  // }
-  console.log(req.params)
-  res.send(formatdata({ code: 1 }));
+  let result = await mongo.find("shops", req.query);
+  if (result.length) {
+    //成功
+    res.send(formatdata({ result: 1 }));
+  } else {
+    //失败
+    res.send(formatdata({ code: 0 }));
+  }
 });
 
 Router.use('/book', async (req, res) => {

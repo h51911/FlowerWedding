@@ -43,9 +43,7 @@ Router.route('/shop').post(async (req, res) => {
     let {
         phone, w_id
     } = req.body;
-
     let c_res = await mongo.find('shops', { phone, w_id });
-
     let data = {};
     if (c_res.length) {//取消收藏
         let res_cancle = await mongo.remove('shops', { w_id });

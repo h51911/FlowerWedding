@@ -11,7 +11,7 @@ import { myorder } from "../../store/actions/user"
 //将store的数据映射到 UI组件
 const mapStateToProps = state => {
     return {
-        info: state.user.uesrInfo,
+        uesrInfo: state.user.uesrInfo,
         nikename: state.user.uesrInfo.nikename,
         phone: state.user.uesrInfo.phone,
         weddingdate: state.user.uesrInfo.weddingdate
@@ -102,7 +102,7 @@ class Mine extends Component {
     }
 
     render() {
-        console.log(this.props);
+        // console.log(this.props);
         let { data } = this.state
         let { nikename, weddingdate } = this.props
         let { menu, info, dis } = this.state

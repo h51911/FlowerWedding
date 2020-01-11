@@ -31,7 +31,7 @@ class Login extends Component {
                     //token写入本地
                     localStorage.setItem("Authorization", data.authorization);
                     localStorage.setItem("user", res);
-                    this.props.dispatch(login(res))
+                    this.props.dispatch(login(JSON.parse(res)));
                     this.props.history.push('/home');
                 } else {
                     message.error("验证失败");
@@ -55,8 +55,6 @@ class Login extends Component {
     }
 
     render() {
-        //console.log(this.props);
-
         const { getFieldDecorator } = this.props.form;
         return <>
             <main className="main1">
@@ -98,7 +96,6 @@ class Login extends Component {
                                 登录
                             </Button>
                         </Form.Item>
-                        {/* < span className="verification-code" onClick={this.sendcode}>获取验证码</span> */}
                     </Form>
                 </div>
             </main>

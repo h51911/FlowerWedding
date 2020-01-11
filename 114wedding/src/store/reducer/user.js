@@ -27,7 +27,7 @@ let initState = {
 
 const reducer = function (state = initState, { type, payload }) {
 
-    let { uesrInfo, myorders,myshops } = state
+    let { uesrInfo, myorders, myshops } = state
 
     switch (type) {
         case UPDATE_GENDER:
@@ -60,15 +60,13 @@ const reducer = function (state = initState, { type, payload }) {
             myshops = payload.myshops
             return {
                 ...state,
-                myorders,myshops
+                myorders, myshops
             }
         case LOGIN:
-            uesrInfo = JSON.stringify(payload);
             return {
                 ...state,
-                uesrInfo
+                uesrInfo: payload
             }
-
 
         default:
             return state;
