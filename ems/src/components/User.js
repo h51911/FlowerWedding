@@ -54,6 +54,26 @@ class User extends Component {
     }
 
     start = () => {
+        console.log(this.state.selectedRowKeys);
+
+        //删除的接口
+        /*  let { data } = await sever.post('/users/delete', {
+             id: this.state.selectedRowKeys
+         });
+ 
+         if (data.) */
+
+        let list = this.state.list.filter(item => {
+            if (!this.state.selectedRowKeys.includes(item._id)) {
+                return item
+            }
+        });
+        this.setState({
+            list
+        })
+
+
+
         this.setState({ loading: true });
         // ajax request after empty completing
         setTimeout(() => {

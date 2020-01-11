@@ -58,6 +58,23 @@ Router.post('/reg', async (req, res) => {
     }
 });
 
+
+//删除
+Router.post('/delete', async (req, res) => {
+    let { id } = req.body
+
+    id.forEach(item => {
+        let result = await mongo.remove('user', { _id: item._id });
+        if (result) {
+            res.send(formatdata({ data: result }))
+        } else {
+            res.send(formatdata({ code: 0 }))
+        }
+    })
+
+
+});
+
 //修改用户相关数据
 Router.post('/updateuser', async (req, res) => {
     let { phone, nikename, weddingdate, gender } = req.body
