@@ -2,6 +2,8 @@
 export const UPDATE_GENDER = 'UPDATE_GENDER';
 export const UP_NIKENAME = 'UP_NIKENAME';
 export const UP_INFO = 'UP_INFO';
+export const UP_WEDDINGDATE = 'UP_WEDDINGDATE';
+export const MYORDERS = 'MYORDERS';
 export const LOGIN = 'LOGIN';
 
 let uesrInfo = JSON.parse(localStorage.getItem('user'))
@@ -19,13 +21,13 @@ let authorization = localStorage.getItem('Authorization');
 let initState = {
     uesrInfo,//用户基本信息
     authorization,//token值
-    myshop: {},//我的商家
-    myorder: {}//我的预约
+    myshops: [],//我的商家
+    myorders: []//我的预约
 }
 
 const reducer = function (state = initState, { type, payload }) {
 
-    let { uesrInfo } = state
+    let { uesrInfo, myorders,myshops } = state
 
     switch (type) {
         case UPDATE_GENDER:
@@ -46,6 +48,19 @@ const reducer = function (state = initState, { type, payload }) {
             return {
                 ...state,
                 uesrInfo
+            }
+        case UP_WEDDINGDATE:
+            uesrInfo.weddingdate = payload.weddingdate
+            return {
+                ...state,
+                uesrInfo
+            }
+        case MYORDERS:
+            myorders = payload.myorders
+            myshops = payload.myshops
+            return {
+                ...state,
+                myorders,myshops
             }
         case LOGIN:
             uesrInfo = JSON.stringify(payload);

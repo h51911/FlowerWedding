@@ -87,3 +87,21 @@
   left: 0;
   opacity: 0;
 }
+
+.like {
+  font-size: 0.277778rem;
+  line-height: 0.277778rem;
+  color: #c5c5c5;
+  text-align: center;
+  margin-bottom: 0.453704rem;
+  span:before,
+  span:after {
+    content: "";
+    display: inline-block;
+    width: 0.277778rem;
+    height: 0.037037rem;
+    background-color: #c5c5c5;
+    margin: 0 0.277778rem;
+    vertical-align: middle;
+  }
+}

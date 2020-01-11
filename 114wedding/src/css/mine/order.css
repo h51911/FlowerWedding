@@ -1,0 +1,54 @@
+.myshops .con {
+  display: flex;
+  justify-content: space-between;
+  border-top: 0.185185rem solid #f4f4f4;
+  padding: 0.555556rem  1.018519rem  0.555556rem 0.648148rem;
+}
+
+.myshops .con .imgcon {
+  display: flex;
+}
+
+.myshops .con .imgcon span {
+  width: 0.87037rem;
+  height: 0.87037rem;
+  align-self: center;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.myshops .con .imgcon img {
+  width: 100%;
+  height: 100%;
+}
+
+.myshops .con .text {
+  margin-left: 0.37037rem;
+  flex: 1;
+}
+
+.myshops .con .text p:nth-child(1) {
+  font-size: 0.351852rem;
+  line-height: 0.351852rem;
+  color: #000;
+}
+
+.myshops .con .text p:nth-child(2) {
+  margin-top: 0.351852rem;
+  font-size: 0.240741rem;
+}
+
+.myshops .con .text p:nth-child(3) {
+  margin-top: 0.351852rem;
+  font-size: 0.259259rem;
+  line-height: 0.259259rem;
+}
+
+.myshops .con .l_con {
+  display: flex;
+  align-items: center;
+}
+
+.myshops:nth-last-child(1) {
+  border-bottom: 0.185185rem solid #f4f4f4;
+}
