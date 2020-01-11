@@ -138,6 +138,15 @@ class MyInfo extends Component {
                             />
                         </span>
                     </li>
+                    <li className="info_con">
+                        <span >生日</span>
+                        <div className="info">
+                            {this.time()}
+                        </div>
+                        <span className="upcon">修改
+                            <Icon type="right" />
+                        </span>
+                    </li>
                     <li className="info_con phone">
                         <span>手机</span>
                         <div className="info">{info.phone}</div>
@@ -148,11 +157,11 @@ class MyInfo extends Component {
                         保存
                 </Button>
                 </div>
-                <div className="btn" onClick={this.logout}>
+                {/* <div className="btn" onClick={this.logout}>
                     <Button type="primary" block>
                         退出
                 </Button>
-                </div>
+                </div> */}
 
                 <Pop
                     children={children}
