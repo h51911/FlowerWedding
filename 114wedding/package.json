@@ -45,6 +45,7 @@
   },
   "devDependencies": {
     "antd": "^3.26.6",
+    "mddir": "^1.1.1",
     "react-app-rewired": "^2.1.5",
     "react-router-dom": "^5.1.2",
     "redux-devtools": "^3.5.0"

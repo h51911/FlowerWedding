@@ -81,7 +81,7 @@ class Attention extends Component {
         const hasSelected = selectedRowKeys.length > 0;
         return (
             <>
-                <div className="title1">后台用户信息管理</div>
+                <div className="title1">关注商家信息管理</div>
                 <div>
                     <div style={{ marginBottom: 16 }}>
                         <Button

@@ -13,7 +13,8 @@ li {
 }
 
 body {
-  background-image: url(../../doc/logo/bgimg.jpg);
+  background: url(http://www.52hrttpic.com/image/infoImage/201711/28/D1511251205520.jpeg?1600x1067) no-repeat center center;
+  background-size: 100% 100%;
 }
 
 #components-form-demo-normal-login .login-form {

@@ -91,6 +91,16 @@ class Merchant extends Component {
         })
     }
     start = () => {
+
+        let list = this.state.list.filter(item => {
+            if (!this.state.selectedRowKeys.includes(item._id)) {
+                return item
+            }
+        });
+        this.setState({
+            list
+        })
+
         this.setState({ loading: true });
         // ajax request after empty completing
         setTimeout(() => {

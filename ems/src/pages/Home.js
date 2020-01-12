@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { HashRouter, Route, Redirect, NavLink } from 'react-router-dom';
-import { Layout, Menu, Breadcrumb, Icon } from 'antd';
+import { Layout, Menu, Breadcrumb, Icon, Popconfirm, message, Button } from 'antd';
 
 import User from '../components/User';
 import Merchant from '../components/Merchant';
@@ -11,6 +11,7 @@ import Attention from '../components/Attention';
 import '../css/home/home.css';
 
 import img1 from '../doc/logo/logo.png';
+const text = '确定退出后台管理？';
 
 const { SubMenu } = Menu;
 const { Header, Content, Sider } = Layout;
@@ -50,6 +51,7 @@ class Home extends Component {
     }
 
     change() {
+        message.success("确认退出")
         this.props.history.push("/login");
     }
 
@@ -58,6 +60,10 @@ class Home extends Component {
             collapsed: !this.state.collapsed,
         });
     };
+    confirm = () => {
+        message.info('退出成功');
+        this.props.history.push("/login");
+    }
 
     render() {
         return (
@@ -65,7 +71,11 @@ class Home extends Component {
                 <Layout>
                     <Header className="header">
                         <div className="logo" ><img src={img1} /></div>
-                        <div className="logout" onClick={this.change}>退出</div>
+                        <div className="logout">
+                            <Popconfirm placement="bottom" title={text} onConfirm={this.confirm} okText="Yes" cancelText="No">
+                                <Button>退出</Button>
+                            </Popconfirm>
+                        </div>
                         <div className="title">
                             <p>欢迎&nbsp;<span>{this.state.username}</span>&nbsp;用户登录系统</p>
                         </div>
